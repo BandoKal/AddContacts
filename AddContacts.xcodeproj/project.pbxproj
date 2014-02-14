@@ -21,6 +21,9 @@
 		E5494B6118A97F6C00402250 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B4318A97F6C00402250 /* UIKit.framework */; };
 		E5494B6918A97F6C00402250 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5494B6718A97F6C00402250 /* InfoPlist.strings */; };
 		E5494B6B18A97F6C00402250 /* AddContactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5494B6A18A97F6C00402250 /* AddContactsTests.m */; };
+		E5494B7518A9823300402250 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B7418A9823300402250 /* AddressBook.framework */; };
+		E5494B7718A9823E00402250 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B7618A9823E00402250 /* AddressBookUI.framework */; };
+		E5494B7F18ADED7A00402250 /* yoda.png in Resources */ = {isa = PBXBuildFile; fileRef = E5494B7E18ADED7A00402250 /* yoda.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		E5494B6618A97F6C00402250 /* AddContactsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AddContactsTests-Info.plist"; sourceTree = "<group>"; };
 		E5494B6818A97F6C00402250 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5494B6A18A97F6C00402250 /* AddContactsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsTests.m; sourceTree = "<group>"; };
+		E5494B7418A9823300402250 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		E5494B7618A9823E00402250 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		E5494B7E18ADED7A00402250 /* yoda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoda.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5494B7718A9823E00402250 /* AddressBookUI.framework in Frameworks */,
+				E5494B7518A9823300402250 /* AddressBook.framework in Frameworks */,
 				E5494B4218A97F6C00402250 /* CoreGraphics.framework in Frameworks */,
 				E5494B4418A97F6C00402250 /* UIKit.framework in Frameworks */,
 				E5494B4018A97F6C00402250 /* Foundation.framework in Frameworks */,
@@ -101,6 +109,8 @@
 		E5494B3E18A97F6C00402250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5494B7618A9823E00402250 /* AddressBookUI.framework */,
+				E5494B7418A9823300402250 /* AddressBook.framework */,
 				E5494B3F18A97F6C00402250 /* Foundation.framework */,
 				E5494B4118A97F6C00402250 /* CoreGraphics.framework */,
 				E5494B4318A97F6C00402250 /* UIKit.framework */,
@@ -112,6 +122,7 @@
 		E5494B4518A97F6C00402250 /* AddContacts */ = {
 			isa = PBXGroup;
 			children = (
+				E5494B7E18ADED7A00402250 /* yoda.png */,
 				E5494B4E18A97F6C00402250 /* AppDelegate.h */,
 				E5494B4F18A97F6C00402250 /* AppDelegate.m */,
 				E5494B5118A97F6C00402250 /* Main.storyboard */,
@@ -228,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5494B7F18ADED7A00402250 /* yoda.png in Resources */,
 				E5494B5818A97F6C00402250 /* Images.xcassets in Resources */,
 				E5494B4A18A97F6C00402250 /* InfoPlist.strings in Resources */,
 				E5494B5318A97F6C00402250 /* Main.storyboard in Resources */,
@@ -318,6 +330,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -357,6 +370,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -460,6 +474,7 @@
 				E5494B7018A97F6C00402250 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5494B7118A97F6C00402250 /* Build configuration list for PBXNativeTarget "AddContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +483,7 @@
 				E5494B7318A97F6C00402250 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
