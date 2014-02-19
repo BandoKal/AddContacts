@@ -28,6 +28,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UITextField *quantityLabel;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *withImagesSwitch;
 @property BOOL accessGranted;
 
 
@@ -221,9 +222,10 @@ typedef enum {
             ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
             CFRelease(multiEmail);
             
-            NSData *data = UIImagePNGRepresentation(contactImage);
-            ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
-            
+            if (self.withImagesSwitch.on) {
+                NSData *data = UIImagePNGRepresentation(contactImage);
+                ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
+            }
             
             CFErrorRef addError = NULL;
             ABAddressBookAddRecord(book, person, &addError);
