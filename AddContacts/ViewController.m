@@ -28,6 +28,8 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UITextField *quantityLabel;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *withImagesSwitch;
+@property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property BOOL accessGranted;
 
 
@@ -120,6 +122,8 @@ typedef enum {
         CFIndex nPeople = ABAddressBookGetPersonCount(book);
 
         for (int r = 0; r < nPeople; r++) {
+            [self updateProgressLabelText:r total:(int)nPeople];
+            
             CFErrorRef removeError = NULL;
             ABRecordRef personToRemove = CFArrayGetValueAtIndex(allPeople,r);
             ABAddressBookRemoveRecord(book, personToRemove, &removeError);
@@ -134,8 +138,10 @@ typedef enum {
         NSLog(@"Unable to remove contacts");
         workStatus = FailedRemove;
     }
-    [self.activityIndicator stopAnimating];
-    [self reportStatus:workStatus];
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [self.activityIndicator stopAnimating];
+        [self reportStatus:workStatus];
+    });
 }
 
 -(void)removeAddedContacts {
@@ -153,6 +159,8 @@ typedef enum {
         CFIndex nPeople = CFArrayGetCount(allPeople);
         
         for (int r = 0; r < nPeople; r++) {
+            [self updateProgressLabelText:r total:(int)nPeople];
+            
             CFErrorRef removeError = NULL;
             ABRecordRef personToRemove = CFArrayGetValueAtIndex(allPeople,r);
             ABAddressBookRemoveRecord(book, personToRemove, &removeError);
@@ -168,8 +176,10 @@ typedef enum {
         NSLog(@"Unable to remove contacts");
         workStatus = FailedRemove;
     }
-    [self.activityIndicator stopAnimating];
-    [self reportStatus:workStatus];
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [self.activityIndicator stopAnimating];
+        [self reportStatus:workStatus];
+    });
 }
 
 -(void)createContacts {
@@ -180,6 +190,9 @@ typedef enum {
     if (bookError == NULL) {
         int numContacts = [self.quantityLabel.text intValue];
         for (int i = 0; i< numContacts; i++) {
+            
+            [self updateProgressLabelText:i total:numContacts];
+            
             CFErrorRef contentError = NULL;
             
             // create person info strings
@@ -221,9 +234,10 @@ typedef enum {
             ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
             CFRelease(multiEmail);
             
-            NSData *data = UIImagePNGRepresentation(contactImage);
-            ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
-            
+            if (self.withImagesSwitch.on) {
+                NSData *data = UIImagePNGRepresentation(contactImage);
+                ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
+            }
             
             CFErrorRef addError = NULL;
             ABAddressBookAddRecord(book, person, &addError);
@@ -238,14 +252,15 @@ typedef enum {
                 NSLog(@"Unable to add contact %d to ABbook with error: %@",i, addError);
                 workStatus = SomeSuccessAdd;
             }
-            
         }
     } else {
         NSLog(@"Unable to access Address Book!");
         workStatus = FailedAdd;
     }
-    [self.activityIndicator stopAnimating];
-    [self reportStatus:workStatus];
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [self.activityIndicator stopAnimating];
+        [self reportStatus:workStatus];
+    });
 }
 
 #pragma mark - UITextField Delegate Methods
@@ -259,6 +274,7 @@ typedef enum {
 #pragma mark - IBAction Methods
 
 - (IBAction)userTouchedGoButtonWithSender:(UIButton *)sender {
+    self.statusLabel.hidden = YES;
     [self.quantityLabel resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
@@ -269,6 +285,7 @@ typedef enum {
         }
 }
 - (IBAction)userTouchedRemoveAllContactsWithSender:(UIButton *)sender {
+    self.statusLabel.hidden = YES;
     [self.quantityLabel resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
@@ -278,6 +295,7 @@ typedef enum {
     }
 }
 - (IBAction)userTouchedRemoveAddedContactsWithSender:(UIButton *)sender {
+    self.statusLabel.hidden = YES;
     [self.quantityLabel resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
@@ -285,6 +303,14 @@ typedef enum {
             [self removeAddedContacts];
         });
     }
+}
+
+#pragma mark - Helpers
+
+- (void)updateProgressLabelText: (int)currentlyOn total:(int)total {
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+     self.progressLabel.text = [NSString stringWithFormat:@"%i/%i", currentlyOn + 1, total];
+    });
 }
 
 @end
