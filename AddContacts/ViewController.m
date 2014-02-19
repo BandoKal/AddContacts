@@ -261,6 +261,7 @@ typedef enum {
 #pragma mark - IBAction Methods
 
 - (IBAction)userTouchedGoButtonWithSender:(UIButton *)sender {
+    self.statusLabel.hidden = YES;
     [self.quantityLabel resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
@@ -271,6 +272,7 @@ typedef enum {
         }
 }
 - (IBAction)userTouchedRemoveAllContactsWithSender:(UIButton *)sender {
+    self.statusLabel.hidden = YES;
     [self.quantityLabel resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
@@ -280,6 +282,7 @@ typedef enum {
     }
 }
 - (IBAction)userTouchedRemoveAddedContactsWithSender:(UIButton *)sender {
+    self.statusLabel.hidden = YES;
     [self.quantityLabel resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
