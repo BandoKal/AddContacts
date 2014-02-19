@@ -165,7 +165,7 @@ typedef enum {
             CFErrorRef removeError = NULL;
             ABRecordRef personToRemove = CFArrayGetValueAtIndex(allPeople,r);
             ABAddressBookRemoveRecord(book, personToRemove, &removeError);
-            CFStringRef name = ABRecordCopyCompositeName(personToRemove);
+//            CFStringRef name = ABRecordCopyCompositeName(personToRemove);
             if (removeError != NULL) {
                 NSLog(@"Unable to remove contact %@", personToRemove);
                 workStatus = SomeSuccessRemove;
