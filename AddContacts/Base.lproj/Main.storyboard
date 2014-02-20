@@ -36,8 +36,17 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="qv2-zT-bXH"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a81-0F-KaJ">
+                                <rect key="frame" x="20" y="163" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="hRb-AQ-NsE"/>
+                                </connections>
+                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffx-lC-rKd">
-                                <rect key="frame" x="20" y="402" width="280" height="146"/>
+                                <rect key="frame" x="20" y="422" width="280" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">This product is not intended for use by anyone. Use at your own risk. The owner creator of this software is not liable for any damages incurred by the use of this software. If you want your contacts don't hit the "Remove All Contacts."</string>
@@ -45,19 +54,19 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0SX-Yt-axY">
-                                <rect key="frame" x="142" y="282" width="37" height="37"/>
+                                <rect key="frame" x="142" y="341" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.26953105259999999" green="0.4542649218" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Work Status" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="xlg-Tt-4fT">
-                                <rect key="frame" x="20" y="280" width="274" height="42"/>
+                                <rect key="frame" x="20" y="339" width="274" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0I-yf-8OL">
-                                <rect key="frame" x="120" y="186" width="180" height="55"/>
+                                <rect key="frame" x="120" y="276" width="180" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Remove All Contacts">
                                     <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,8 +76,19 @@
                                     <action selector="userTouchedRemoveAllContactsWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gs5-Uj-zfL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzj-50-H2e">
+                                <rect key="frame" x="126" y="150" width="180" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Remove X Contacts">
+                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="userTouchedRemoveXContactsWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RGE-nR-TQx"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-2W-NWa">
-                                <rect key="frame" x="120" y="123" width="180" height="55"/>
+                                <rect key="frame" x="126" y="213" width="180" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Remove Added Contacts">
                                     <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-1L-jha">
-                                <rect key="frame" x="20" y="330" width="280" height="21"/>
+                                <rect key="frame" x="20" y="389" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -101,9 +121,11 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="0SX-Yt-axY" id="ghe-wa-6Cw"/>
+                        <outlet property="createQuantityTextField" destination="qZ9-B7-3bg" id="QxK-eW-gRG"/>
+                        <outlet property="deleteQuantityTextField" destination="a81-0F-KaJ" id="KNt-hb-vAR"/>
                         <outlet property="goButton" destination="3fX-El-9vQ" id="4Av-1N-YgZ"/>
                         <outlet property="progressLabel" destination="9pi-1L-jha" id="E5S-cw-yzh"/>
-                        <outlet property="quantityLabel" destination="qZ9-B7-3bg" id="mHB-0M-BSg"/>
+                        <outlet property="removeAddedContactsButton" destination="SKU-2W-NWa" id="6j6-fF-QTv"/>
                         <outlet property="statusLabel" destination="xlg-Tt-4fT" id="vJc-Jg-aEn"/>
                         <outlet property="withImagesSwitch" destination="PFV-Y1-ZOU" id="xTu-fV-nca"/>
                     </connections>

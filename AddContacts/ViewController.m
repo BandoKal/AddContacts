@@ -25,7 +25,9 @@ typedef enum {
 @property (nonatomic, assign) ABAddressBookRef addressBook;
 
 @property (strong, nonatomic) IBOutlet UIButton *goButton;
-@property (strong, nonatomic) IBOutlet UITextField *quantityLabel;
+@property (strong, nonatomic) IBOutlet UIButton *removeAddedContactsButton;
+@property (strong, nonatomic) IBOutlet UITextField *createQuantityTextField;
+@property (strong, nonatomic) IBOutlet UITextField *deleteQuantityTextField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *withImagesSwitch;
@@ -39,13 +41,15 @@ typedef enum {
 
 #pragma mark - View Life Cycle Methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.accessGranted = NO;
     [self requestAddressBookAccess];
     
+    //disabling this button while the operation doesn't work
+    self.removeAddedContactsButton.enabled = NO;
+    [self.removeAddedContactsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,8 +58,7 @@ typedef enum {
     // Dispose of any resources that can be recreated.
 }
 
--(void)requestAddressBookAccess
-{
+-(void)requestAddressBookAccess {
     ViewController * __weak weakSelf = self;
     
     ABAddressBookRequestAccessWithCompletion(self.addressBook, ^(bool granted, CFErrorRef error)
@@ -108,7 +111,7 @@ typedef enum {
     }
 }
 
--(void)removeAllContacts {
+-(void)removeContacts: (int)numberToRemove {
     workStatus = SuccessRemove;
     CFErrorRef bookError = NULL;
     ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
@@ -119,10 +122,10 @@ typedef enum {
         
         ABRecordRef source = ABAddressBookCopyDefaultSource(book);
         CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(book, source, kABPersonSortByFirstName);
-        CFIndex nPeople = ABAddressBookGetPersonCount(book);
+        
 
-        for (int r = 0; r < nPeople; r++) {
-            [self updateProgressLabelText:r total:(int)nPeople];
+        for (int r = 0; r < numberToRemove; r++) {
+            [self updateProgressLabelText:r total:(int)numberToRemove];
             
             CFErrorRef removeError = NULL;
             ABRecordRef personToRemove = CFArrayGetValueAtIndex(allPeople,r);
@@ -188,7 +191,7 @@ typedef enum {
     ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
     
     if (bookError == NULL) {
-        int numContacts = [self.quantityLabel.text intValue];
+        int numContacts = [self.createQuantityTextField.text intValue];
         for (int i = 0; i< numContacts; i++) {
             
             [self updateProgressLabelText:i total:numContacts];
@@ -198,7 +201,7 @@ typedef enum {
             // create person info strings
             NSString *fName = @"TestContact";
             NSString *lName = [NSString stringWithFormat:@"%d_last",i];
-            NSString *phoneNumber = [NSString stringWithFormat:@"%ld", arc4random()%99999999999 + 10000000000]; // 999.999.9999
+            NSString *phoneNumber = [NSString stringWithFormat:@"%lld", arc4random()%99999999999 + 10000000000]; // 999.999.9999
             NSString *streetAddress = [NSString stringWithFormat:@"%d street", arc4random()%9999 + 1000];
             NSString *city = [NSString stringWithFormat:@"Nashville"];
             NSString *state = @"TN";
@@ -275,7 +278,7 @@ typedef enum {
 
 - (IBAction)userTouchedGoButtonWithSender:(UIButton *)sender {
     self.statusLabel.hidden = YES;
-    [self.quantityLabel resignFirstResponder];
+    [self.createQuantityTextField resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -286,21 +289,35 @@ typedef enum {
 }
 - (IBAction)userTouchedRemoveAllContactsWithSender:(UIButton *)sender {
     self.statusLabel.hidden = YES;
-    [self.quantityLabel resignFirstResponder];
+    [self.createQuantityTextField resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self removeAllContacts];
+            CFErrorRef bookError = NULL;
+            ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
+            CFIndex nPeople = ABAddressBookGetPersonCount(book);
+            [self removeContacts:nPeople];
         });
     }
 }
 - (IBAction)userTouchedRemoveAddedContactsWithSender:(UIButton *)sender {
     self.statusLabel.hidden = YES;
-    [self.quantityLabel resignFirstResponder];
+    [self.createQuantityTextField resignFirstResponder];
     [self.activityIndicator startAnimating];
     if (self.accessGranted) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self removeAddedContacts];
+        });
+    }
+}
+
+- (IBAction)userTouchedRemoveXContactsWithSender:(id)sender {
+    self.statusLabel.hidden = YES;
+    [self.deleteQuantityTextField resignFirstResponder];
+    [self.activityIndicator startAnimating];
+    if (self.accessGranted) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self removeContacts:self.deleteQuantityTextField.text.intValue];
         });
     }
 }
