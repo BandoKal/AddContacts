@@ -167,7 +167,6 @@ typedef enum {
             CFErrorRef removeError = NULL;
             ABRecordRef personToRemove = CFArrayGetValueAtIndex(allPeople,r);
             ABAddressBookRemoveRecord(book, personToRemove, &removeError);
-//            CFStringRef name = ABRecordCopyCompositeName(personToRemove);
             if (removeError != NULL) {
                 NSLog(@"Unable to remove contact %@", personToRemove);
                 workStatus = SomeSuccessRemove;
@@ -201,7 +200,7 @@ typedef enum {
             // create person info strings
             NSString *fName = @"TestContact";
             NSString *lName = [NSString stringWithFormat:@"%d_last",i];
-            NSString *phoneNumber = [NSString stringWithFormat:@"%lld", arc4random()%99999999999 + 10000000000]; // 999.999.9999
+            NSString *phoneNumber = [NSString stringWithFormat:@"%lld", arc4random() %99999999999 + 10000000000]; // 999.999.9999
             NSString *streetAddress = [NSString stringWithFormat:@"%d street", arc4random()%9999 + 1000];
             NSString *city = [NSString stringWithFormat:@"Nashville"];
             NSString *state = @"TN";
