@@ -25,6 +25,7 @@ typedef enum {
 @property (nonatomic, assign) ABAddressBookRef addressBook;
 
 @property (strong, nonatomic) IBOutlet UIButton *goButton;
+@property (strong, nonatomic) IBOutlet UIButton *removeAddedContactsButton;
 @property (strong, nonatomic) IBOutlet UITextField *createQuantityTextField;
 @property (strong, nonatomic) IBOutlet UITextField *deleteQuantityTextField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -40,13 +41,15 @@ typedef enum {
 
 #pragma mark - View Life Cycle Methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.accessGranted = NO;
     [self requestAddressBookAccess];
     
+    //disabling this button while the operation doesn't work
+    self.removeAddedContactsButton.enabled = NO;
+    [self.removeAddedContactsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,8 +58,7 @@ typedef enum {
     // Dispose of any resources that can be recreated.
 }
 
--(void)requestAddressBookAccess
-{
+-(void)requestAddressBookAccess {
     ViewController * __weak weakSelf = self;
     
     ABAddressBookRequestAccessWithCompletion(self.addressBook, ^(bool granted, CFErrorRef error)

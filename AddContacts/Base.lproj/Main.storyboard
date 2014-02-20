@@ -125,6 +125,7 @@
                         <outlet property="deleteQuantityTextField" destination="a81-0F-KaJ" id="KNt-hb-vAR"/>
                         <outlet property="goButton" destination="3fX-El-9vQ" id="4Av-1N-YgZ"/>
                         <outlet property="progressLabel" destination="9pi-1L-jha" id="E5S-cw-yzh"/>
+                        <outlet property="removeAddedContactsButton" destination="SKU-2W-NWa" id="6j6-fF-QTv"/>
                         <outlet property="statusLabel" destination="xlg-Tt-4fT" id="vJc-Jg-aEn"/>
                         <outlet property="withImagesSwitch" destination="PFV-Y1-ZOU" id="xTu-fV-nca"/>
                     </connections>
