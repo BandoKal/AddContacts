@@ -19,6 +19,8 @@ typedef enum {
     SuccessRemove
 }StatusType;
 
+#define DELETE_ALL_CONFIRM_ALERT 101
+
 @interface ViewController () {
     StatusType workStatus;
 }
@@ -124,7 +126,7 @@ typedef enum {
         CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(book, source, kABPersonSortByFirstName);
         
 
-        for (int r = 0; r < numberToRemove; r++) {
+        for (int r = 0; r < numberToRemove && CFArrayGetCount(allPeople) != 0; r++) {
             [self updateProgressLabelText:r total:(int)numberToRemove];
             
             CFErrorRef removeError = NULL;
@@ -151,7 +153,6 @@ typedef enum {
     workStatus = SuccessRemove;
     CFErrorRef bookError = NULL;
     ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
-    
     
     
     if (bookError == NULL) {
@@ -287,17 +288,13 @@ typedef enum {
         }
 }
 - (IBAction)userTouchedRemoveAllContactsWithSender:(UIButton *)sender {
-    self.statusLabel.hidden = YES;
-    [self.createQuantityTextField resignFirstResponder];
-    [self.activityIndicator startAnimating];
-    if (self.accessGranted) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            CFErrorRef bookError = NULL;
-            ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
-            CFIndex nPeople = ABAddressBookGetPersonCount(book);
-            [self removeContacts:nPeople];
-        });
-    }
+    UIAlertView *removeAllConfirmAlert = [[UIAlertView alloc]initWithTitle:@"Are You Sure?"
+                                                                   message:@"Press ok to delete all contacts in your address book."
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Cancel"
+                                                         otherButtonTitles:@"OK", nil];
+    removeAllConfirmAlert.tag = DELETE_ALL_CONFIRM_ALERT;
+    [removeAllConfirmAlert show];
 }
 - (IBAction)userTouchedRemoveAddedContactsWithSender:(UIButton *)sender {
     self.statusLabel.hidden = YES;
@@ -327,6 +324,32 @@ typedef enum {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
      self.progressLabel.text = [NSString stringWithFormat:@"%i/%i", currentlyOn + 1, total];
     });
+}
+
+#pragma mark - UIAlertView Delegate Methods
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (alertView.tag != DELETE_ALL_CONFIRM_ALERT) {
+        return;
+    }
+    switch (buttonIndex) {
+        case 1:// OK clicked
+            self.statusLabel.hidden = YES;
+            [self.createQuantityTextField resignFirstResponder];
+            [self.activityIndicator startAnimating];
+            if (self.accessGranted) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    CFErrorRef bookError = NULL;
+                    ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
+                    CFIndex nPeople = ABAddressBookGetPersonCount(book);
+                    [self removeContacts:nPeople];
+                });
+            }
+            break;
+            
+        default: // Cancel Clicked
+            // do nothing
+            break;
+    }
 }
 
 @end
