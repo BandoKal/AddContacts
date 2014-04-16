@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AddContacts/ViewController.m"
-            timestampString = "415222656.985141"
+            filePath = "AddContacts/AddAssestsViewController.m"
+            timestampString = "419359990.849592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "-alertView:didDismissWithButtonIndex:"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-userTouchedAddImagesWithSender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,75 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AddContacts/ViewController.m"
-            timestampString = "415222656.985141"
+            filePath = "AddContacts/AddAssestsViewController.m"
+            timestampString = "419359990.849592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "-alertView:didDismissWithButtonIndex:"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-addImagesToAssets"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddContacts/AddAssestsViewController.m"
+            timestampString = "419359990.849592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-addImagesToAssets"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AddAssestsViewController addImagesToAssets]"
+                  moduleName = "AddContacts"
+                  urlString = "file:///Users/jason.bandy/Desktop/AddContacts/AddContacts/AddAssestsViewController.m"
+                  timestampString = "419359856.256518"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "342">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[AddAssestsViewController addImagesToAssets]_block_invoke"
+                  moduleName = "AddContacts"
+                  urlString = "file:///Users/jason.bandy/Desktop/AddContacts/AddContacts/AddAssestsViewController.m"
+                  timestampString = "419359856.25671"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddContacts/AddAssestsViewController.m"
+            timestampString = "419359990.849592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-addImagesToAssets"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

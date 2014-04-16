@@ -7,6 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "OCMock.h"
+//#import <OCMock/OCMock.h>
+#import "AddContactsViewController.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface AddContactsTests : XCTestCase
 
@@ -24,11 +29,6 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

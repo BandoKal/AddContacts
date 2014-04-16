@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Jason Bandy. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AddContactsViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
@@ -21,7 +21,7 @@ typedef enum {
 
 #define DELETE_ALL_CONFIRM_ALERT 101
 
-@interface ViewController () {
+@interface AddContactsViewController () {
     StatusType workStatus;
 }
 @property (nonatomic, assign) ABAddressBookRef addressBook;
@@ -39,7 +39,7 @@ typedef enum {
 
 @end
 
-@implementation ViewController
+@implementation AddContactsViewController
 
 #pragma mark - View Life Cycle Methods
 
@@ -61,7 +61,7 @@ typedef enum {
 }
 
 -(void)requestAddressBookAccess {
-    ViewController * __weak weakSelf = self;
+    AddContactsViewController * __weak weakSelf = self;
     
     ABAddressBookRequestAccessWithCompletion(self.addressBook, ^(bool granted, CFErrorRef error)
                                              {
@@ -341,7 +341,7 @@ typedef enum {
                     CFErrorRef bookError = NULL;
                     ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
                     CFIndex nPeople = ABAddressBookGetPersonCount(book);
-                    [self removeContacts:nPeople];
+                    [self removeContacts:(int)nPeople ];
                 });
             }
             break;

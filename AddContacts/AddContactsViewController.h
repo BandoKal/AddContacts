@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate>
+@interface AddContactsViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate>
 
 @end

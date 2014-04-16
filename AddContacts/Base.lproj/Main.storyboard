@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="5lH-UC-JSV">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="7aU-n6-3ao" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="5h4-oH-zog">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="tNh-LB-VnY"/>
+                        <segue destination="R4H-49-8F7" kind="relationship" relationship="viewControllers" id="wv0-gX-DFg"/>
+                        <segue destination="1fj-bf-vTj" kind="relationship" relationship="viewControllers" id="C4F-Fj-bw3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W8N-8q-pjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-80" y="586"/>
+        </scene>
+        <!--Add Contacts View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="AddContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VsQ-6W-na4"/>
                         <viewControllerLayoutGuide type="bottom" id="ho9-yF-R2s"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fX-El-9vQ">
@@ -45,14 +65,6 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="hRb-AQ-NsE"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffx-lC-rKd">
-                                <rect key="frame" x="20" y="422" width="280" height="136"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">This product is not intended for use by anyone. Use at your own risk. The owner creator of this software is not liable for any damages incurred by the use of this software. If you want your contacts don't hit the "Remove All Contacts."</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0SX-Yt-axY">
                                 <rect key="frame" x="142" y="341" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,7 +78,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0I-yf-8OL">
-                                <rect key="frame" x="120" y="276" width="180" height="55"/>
+                                <rect key="frame" x="120" y="213" width="180" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Remove All Contacts">
                                     <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,8 +99,8 @@
                                     <action selector="userTouchedRemoveXContactsWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RGE-nR-TQx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-2W-NWa">
-                                <rect key="frame" x="126" y="213" width="180" height="55"/>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-2W-NWa">
+                                <rect key="frame" x="114" y="276" width="180" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Remove Added Contacts">
                                     <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -119,6 +131,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="cvm-aB-O06" userLabel="Tab Bar Item - Item 1"/>
                     <connections>
                         <outlet property="activityIndicator" destination="0SX-Yt-axY" id="ghe-wa-6Cw"/>
                         <outlet property="createQuantityTextField" destination="qZ9-B7-3bg" id="QxK-eW-gRG"/>
@@ -132,12 +145,118 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629" y="-12"/>
+            <point key="canvasLocation" x="454" y="-94"/>
+        </scene>
+        <!--Add Assests View Controller - Photos-->
+        <scene sceneID="7Yn-8P-2bB">
+            <objects>
+                <viewController id="R4H-49-8F7" customClass="AddAssestsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tiq-h1-Zil"/>
+                        <viewControllerLayoutGuide type="bottom" id="UJT-uv-V4P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hca-Ba-skh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR0-VJ-wix">
+                                <rect key="frame" x="85" y="97" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="A0s-Qn-kH0"/>
+                                </constraints>
+                                <state key="normal" title="Add Images">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="userTouchedAddImagesWithSender:" destination="R4H-49-8F7" eventType="touchUpInside" id="Qu8-Jq-ghR"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-Ak-ytL">
+                                <rect key="frame" x="85" y="79" width="150" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="5Eg-0h-Sdf"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.14956775489999999" green="1" blue="0.1205373637" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T6Z-jB-EQa">
+                                <rect key="frame" x="122" y="27" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="R4H-49-8F7" id="kS4-UZ-8b2"/>
+                                </connections>
+                            </textField>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Images added successfully" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcx-Q8-Oxc">
+                                <rect key="frame" x="20" y="229" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T6Z-jB-EQa" firstAttribute="top" secondItem="Tiq-h1-Zil" secondAttribute="bottom" constant="7" id="1uj-LD-6HY"/>
+                            <constraint firstItem="q1o-Ak-ytL" firstAttribute="top" secondItem="T6Z-jB-EQa" secondAttribute="bottom" constant="22" id="5ek-ho-yJ0"/>
+                            <constraint firstItem="UR0-VJ-wix" firstAttribute="top" secondItem="q1o-Ak-ytL" secondAttribute="bottom" constant="8" id="IBM-Qw-ZR6"/>
+                            <constraint firstAttribute="centerX" secondItem="T6Z-jB-EQa" secondAttribute="centerX" id="OEI-gg-nPm"/>
+                            <constraint firstAttribute="trailing" secondItem="q1o-Ak-ytL" secondAttribute="trailing" constant="85" id="YCA-Hv-0Nw"/>
+                            <constraint firstAttribute="centerX" secondItem="q1o-Ak-ytL" secondAttribute="centerX" id="ak7-dt-5sK"/>
+                            <constraint firstItem="UR0-VJ-wix" firstAttribute="leading" secondItem="hca-Ba-skh" secondAttribute="leading" constant="85" id="f5v-fc-Pe6"/>
+                            <constraint firstItem="q1o-Ak-ytL" firstAttribute="leading" secondItem="hca-Ba-skh" secondAttribute="leading" constant="85" id="ml9-MI-QrT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Photos" image="iPhoto.png" id="RLv-xS-DB0"/>
+                    <connections>
+                        <outlet property="doneLabel" destination="Gcx-Q8-Oxc" id="0FD-k8-5Nw"/>
+                        <outlet property="progressBarView" destination="q1o-Ak-ytL" id="6dQ-ox-qDC"/>
+                        <outlet property="quantityTextField" destination="T6Z-jB-EQa" id="eLn-Qy-oLl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fe6-ic-G0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="456" y="586"/>
+        </scene>
+        <!--View Controller - About-->
+        <scene sceneID="bt6-bg-UaE">
+            <objects>
+                <viewController id="1fj-bf-vTj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bdt-hX-yeE"/>
+                        <viewControllerLayoutGuide type="bottom" id="m5U-J7-RAT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u3I-00-NEy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dJ-MW-0gd">
+                                <rect key="frame" x="20" y="20" width="280" height="490"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">This product is not intended for use by anyone. Use at your own risk. The owner creator of this software is not liable for any damages incurred by the use of this software. If you want your contacts don't hit the "Remove All Contacts."</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" image="2c-info.png" id="7P6-q3-zaR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W3q-O0-OWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="456" y="1267"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="2c-info.png" width="35" height="35"/>
+        <image name="iPhoto.png" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

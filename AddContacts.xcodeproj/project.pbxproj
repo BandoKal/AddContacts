@@ -13,10 +13,8 @@
 		E5494B4A18A97F6C00402250 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5494B4818A97F6C00402250 /* InfoPlist.strings */; };
 		E5494B4C18A97F6C00402250 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5494B4B18A97F6C00402250 /* main.m */; };
 		E5494B5018A97F6C00402250 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5494B4F18A97F6C00402250 /* AppDelegate.m */; };
-		E5494B5318A97F6C00402250 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5494B5118A97F6C00402250 /* Main.storyboard */; };
-		E5494B5618A97F6C00402250 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5494B5518A97F6C00402250 /* ViewController.m */; };
+		E5494B5618A97F6C00402250 /* AddContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5494B5518A97F6C00402250 /* AddContactsViewController.m */; };
 		E5494B5818A97F6C00402250 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5494B5718A97F6C00402250 /* Images.xcassets */; };
-		E5494B5F18A97F6C00402250 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B5E18A97F6C00402250 /* XCTest.framework */; };
 		E5494B6018A97F6C00402250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B3F18A97F6C00402250 /* Foundation.framework */; };
 		E5494B6118A97F6C00402250 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B4318A97F6C00402250 /* UIKit.framework */; };
 		E5494B6918A97F6C00402250 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5494B6718A97F6C00402250 /* InfoPlist.strings */; };
@@ -24,6 +22,20 @@
 		E5494B7518A9823300402250 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B7418A9823300402250 /* AddressBook.framework */; };
 		E5494B7718A9823E00402250 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B7618A9823E00402250 /* AddressBookUI.framework */; };
 		E5494B7F18ADED7A00402250 /* yoda.png in Resources */ = {isa = PBXBuildFile; fileRef = E5494B7E18ADED7A00402250 /* yoda.png */; };
+		E59C583D18D0D6E300FF990C /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59C583B18D0BC8200FF990C /* libOCMock.a */; };
+		E5D0915F18FDD29200BD8A85 /* ALAssetMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915818FDD29200BD8A85 /* ALAssetMock.m */; };
+		E5D0916018FDD29200BD8A85 /* ALAssetRepresentationMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915A18FDD29200BD8A85 /* ALAssetRepresentationMock.m */; };
+		E5D0916118FDD29200BD8A85 /* ALAssetsGroupMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915C18FDD29200BD8A85 /* ALAssetsGroupMock.m */; };
+		E5D0916218FDD29200BD8A85 /* ALAssetsLibraryMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915E18FDD29200BD8A85 /* ALAssetsLibraryMock.m */; };
+		E5D0916618FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0916518FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.m */; };
+		E5D24BCB18D0DB9900514A49 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B5E18A97F6C00402250 /* XCTest.framework */; };
+		E5D24BCE18D0DF3800514A49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D24BCC18D0DF3800514A49 /* Main.storyboard */; };
+		E5D24BD018D2039500514A49 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */; };
+		E5D24BD118D2039C00514A49 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */; };
+		E5E0F3FF18CF6242006320AA /* 2c-info.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E0F3FE18CF6242006320AA /* 2c-info.png */; };
+		E5E0F40118CF624A006320AA /* iPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E0F40018CF624A006320AA /* iPhoto.png */; };
+		E5E0F41618CF812C006320AA /* AddAssestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E0F41518CF812C006320AA /* AddAssestsViewController.m */; };
+		E5E0F41818CF865F006320AA /* AddAssestsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E0F41718CF865F006320AA /* AddAssestsViewControllerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +59,8 @@
 		E5494B4D18A97F6C00402250 /* AddContacts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AddContacts-Prefix.pch"; sourceTree = "<group>"; };
 		E5494B4E18A97F6C00402250 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E5494B4F18A97F6C00402250 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E5494B5218A97F6C00402250 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E5494B5418A97F6C00402250 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E5494B5518A97F6C00402250 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E5494B5418A97F6C00402250 /* AddContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactsViewController.h; sourceTree = "<group>"; };
+		E5494B5518A97F6C00402250 /* AddContactsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactsViewController.m; sourceTree = "<group>"; };
 		E5494B5718A97F6C00402250 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E5494B5D18A97F6C00402250 /* AddContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddContactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5494B5E18A97F6C00402250 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -59,6 +70,24 @@
 		E5494B7418A9823300402250 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E5494B7618A9823E00402250 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E5494B7E18ADED7A00402250 /* yoda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoda.png; sourceTree = "<group>"; };
+		E59C583B18D0BC8200FF990C /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/library/libOCMock.a; sourceTree = "<group>"; };
+		E5D0915718FDD29200BD8A85 /* ALAssetMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetMock.h; sourceTree = "<group>"; };
+		E5D0915818FDD29200BD8A85 /* ALAssetMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetMock.m; sourceTree = "<group>"; };
+		E5D0915918FDD29200BD8A85 /* ALAssetRepresentationMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetRepresentationMock.h; sourceTree = "<group>"; };
+		E5D0915A18FDD29200BD8A85 /* ALAssetRepresentationMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetRepresentationMock.m; sourceTree = "<group>"; };
+		E5D0915B18FDD29200BD8A85 /* ALAssetsGroupMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetsGroupMock.h; sourceTree = "<group>"; };
+		E5D0915C18FDD29200BD8A85 /* ALAssetsGroupMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetsGroupMock.m; sourceTree = "<group>"; };
+		E5D0915D18FDD29200BD8A85 /* ALAssetsLibraryMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetsLibraryMock.h; sourceTree = "<group>"; };
+		E5D0915E18FDD29200BD8A85 /* ALAssetsLibraryMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetsLibraryMock.m; sourceTree = "<group>"; };
+		E5D0916418FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+LibraryHelper.h"; sourceTree = "<group>"; };
+		E5D0916518FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+LibraryHelper.m"; sourceTree = "<group>"; };
+		E5D24BCD18D0DF3800514A49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		E5E0F3FE18CF6242006320AA /* 2c-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2c-info.png"; sourceTree = "<group>"; };
+		E5E0F40018CF624A006320AA /* iPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoto.png; sourceTree = "<group>"; };
+		E5E0F41418CF812C006320AA /* AddAssestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAssestsViewController.h; sourceTree = "<group>"; };
+		E5E0F41518CF812C006320AA /* AddAssestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssestsViewController.m; sourceTree = "<group>"; };
+		E5E0F41718CF865F006320AA /* AddAssestsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssestsViewControllerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D24BD018D2039500514A49 /* AssetsLibrary.framework in Frameworks */,
 				E5494B7718A9823E00402250 /* AddressBookUI.framework in Frameworks */,
 				E5494B7518A9823300402250 /* AddressBook.framework in Frameworks */,
 				E5494B4218A97F6C00402250 /* CoreGraphics.framework in Frameworks */,
@@ -78,7 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5494B5F18A97F6C00402250 /* XCTest.framework in Frameworks */,
+				E5D24BD118D2039C00514A49 /* AssetsLibrary.framework in Frameworks */,
+				E5D24BCB18D0DB9900514A49 /* XCTest.framework in Frameworks */,
+				E59C583D18D0D6E300FF990C /* libOCMock.a in Frameworks */,
 				E5494B6118A97F6C00402250 /* UIKit.framework in Frameworks */,
 				E5494B6018A97F6C00402250 /* Foundation.framework in Frameworks */,
 			);
@@ -109,6 +141,8 @@
 		E5494B3E18A97F6C00402250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */,
+				E59C583B18D0BC8200FF990C /* libOCMock.a */,
 				E5494B7618A9823E00402250 /* AddressBookUI.framework */,
 				E5494B7418A9823300402250 /* AddressBook.framework */,
 				E5494B3F18A97F6C00402250 /* Foundation.framework */,
@@ -122,14 +156,19 @@
 		E5494B4518A97F6C00402250 /* AddContacts */ = {
 			isa = PBXGroup;
 			children = (
-				E5494B7E18ADED7A00402250 /* yoda.png */,
+				E5D0916318FEE77D00BD8A85 /* Library_Helpers */,
+				E5E0F3FE18CF6242006320AA /* 2c-info.png */,
+				E5E0F41418CF812C006320AA /* AddAssestsViewController.h */,
+				E5E0F41518CF812C006320AA /* AddAssestsViewController.m */,
+				E5494B5418A97F6C00402250 /* AddContactsViewController.h */,
+				E5494B5518A97F6C00402250 /* AddContactsViewController.m */,
 				E5494B4E18A97F6C00402250 /* AppDelegate.h */,
 				E5494B4F18A97F6C00402250 /* AppDelegate.m */,
-				E5494B5118A97F6C00402250 /* Main.storyboard */,
-				E5494B5418A97F6C00402250 /* ViewController.h */,
-				E5494B5518A97F6C00402250 /* ViewController.m */,
 				E5494B5718A97F6C00402250 /* Images.xcassets */,
+				E5E0F40018CF624A006320AA /* iPhoto.png */,
+				E5D24BCC18D0DF3800514A49 /* Main.storyboard */,
 				E5494B4618A97F6C00402250 /* Supporting Files */,
+				E5494B7E18ADED7A00402250 /* yoda.png */,
 			);
 			path = AddContacts;
 			sourceTree = "<group>";
@@ -148,6 +187,8 @@
 		E5494B6418A97F6C00402250 /* AddContactsTests */ = {
 			isa = PBXGroup;
 			children = (
+				E5D0915618FDD1B100BD8A85 /* Mock */,
+				E5E0F41718CF865F006320AA /* AddAssestsViewControllerTests.m */,
 				E5494B6A18A97F6C00402250 /* AddContactsTests.m */,
 				E5494B6518A97F6C00402250 /* Supporting Files */,
 			);
@@ -161,6 +202,30 @@
 				E5494B6718A97F6C00402250 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E5D0915618FDD1B100BD8A85 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				E5D0915718FDD29200BD8A85 /* ALAssetMock.h */,
+				E5D0915818FDD29200BD8A85 /* ALAssetMock.m */,
+				E5D0915918FDD29200BD8A85 /* ALAssetRepresentationMock.h */,
+				E5D0915A18FDD29200BD8A85 /* ALAssetRepresentationMock.m */,
+				E5D0915B18FDD29200BD8A85 /* ALAssetsGroupMock.h */,
+				E5D0915C18FDD29200BD8A85 /* ALAssetsGroupMock.m */,
+				E5D0915D18FDD29200BD8A85 /* ALAssetsLibraryMock.h */,
+				E5D0915E18FDD29200BD8A85 /* ALAssetsLibraryMock.m */,
+			);
+			name = Mock;
+			sourceTree = "<group>";
+		};
+		E5D0916318FEE77D00BD8A85 /* Library_Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E5D0916418FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.h */,
+				E5D0916518FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.m */,
+			);
+			name = Library_Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +272,7 @@
 		E5494B3418A97F6C00402250 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Jason Bandy";
 				TargetAttributes = {
 					E5494B5C18A97F6C00402250 = {
@@ -240,9 +305,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5494B7F18ADED7A00402250 /* yoda.png in Resources */,
+				E5E0F3FF18CF6242006320AA /* 2c-info.png in Resources */,
 				E5494B5818A97F6C00402250 /* Images.xcassets in Resources */,
+				E5D24BCE18D0DF3800514A49 /* Main.storyboard in Resources */,
 				E5494B4A18A97F6C00402250 /* InfoPlist.strings in Resources */,
-				E5494B5318A97F6C00402250 /* Main.storyboard in Resources */,
+				E5E0F40118CF624A006320AA /* iPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,9 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5494B5618A97F6C00402250 /* ViewController.m in Sources */,
+				E5494B5618A97F6C00402250 /* AddContactsViewController.m in Sources */,
 				E5494B5018A97F6C00402250 /* AppDelegate.m in Sources */,
 				E5494B4C18A97F6C00402250 /* main.m in Sources */,
+				E5E0F41618CF812C006320AA /* AddAssestsViewController.m in Sources */,
+				E5D0916618FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +340,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D0916018FDD29200BD8A85 /* ALAssetRepresentationMock.m in Sources */,
+				E5D0916218FDD29200BD8A85 /* ALAssetsLibraryMock.m in Sources */,
+				E5D0915F18FDD29200BD8A85 /* ALAssetMock.m in Sources */,
 				E5494B6B18A97F6C00402250 /* AddContactsTests.m in Sources */,
+				E5D0916118FDD29200BD8A85 /* ALAssetsGroupMock.m in Sources */,
+				E5E0F41818CF865F006320AA /* AddAssestsViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,20 +368,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		E5494B5118A97F6C00402250 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E5494B5218A97F6C00402250 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E5494B6718A97F6C00402250 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E5494B6818A97F6C00402250 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E5D24BCC18D0DF3800514A49 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5D24BCD18D0DF3800514A49 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -317,7 +391,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = NO;
@@ -331,7 +404,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Asurion Insurance Services, Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Asurion Insurance Services, Inc.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -341,6 +414,8 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -350,6 +425,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -358,7 +434,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = NO;
@@ -376,6 +451,8 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -384,6 +461,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -394,10 +472,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Asurion Insurance Services, Inc.";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddContacts/AddContacts-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "AddContacts/AddContacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -407,10 +495,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddContacts/AddContacts-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "AddContacts/AddContacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -418,8 +515,8 @@
 		E5494B7218A97F6C00402250 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AddContacts.app/AddContacts";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -431,9 +528,26 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/OCMock/headers/**",
+				);
 				INFOPLIST_FILE = "AddContactsTests/AddContactsTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock/library";
+				MACH_O_TYPE = mh_bundle;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/OCMock/library/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -441,8 +555,8 @@
 		E5494B7318A97F6C00402250 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AddContacts.app/AddContacts";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -450,9 +564,26 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddContacts/AddContacts-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/OCMock/headers/**",
+				);
 				INFOPLIST_FILE = "AddContactsTests/AddContactsTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock/library";
+				MACH_O_TYPE = mh_bundle;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/OCMock/library/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -461,7 +592,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = NO;
@@ -485,6 +615,8 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -494,6 +626,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug_QA;
@@ -503,10 +636,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddContacts/AddContacts-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "AddContacts/AddContacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug_QA;
@@ -514,8 +656,8 @@
 		E5494BE918B69C8B00402250 /* Debug_QA */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AddContacts.app/AddContacts";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -527,9 +669,26 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/OCMock/headers/**",
+				);
 				INFOPLIST_FILE = "AddContactsTests/AddContactsTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OCMock/library";
+				MACH_O_TYPE = mh_bundle;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/OCMock/library/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug_QA;
