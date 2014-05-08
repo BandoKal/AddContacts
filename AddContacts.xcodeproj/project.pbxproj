@@ -39,8 +39,8 @@
 		E5D24BD118D2039C00514A49 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */; };
 		E5E0F3FF18CF6242006320AA /* 2c-info.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E0F3FE18CF6242006320AA /* 2c-info.png */; };
 		E5E0F40118CF624A006320AA /* iPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E0F40018CF624A006320AA /* iPhoto.png */; };
-		E5E0F41618CF812C006320AA /* AddAssestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E0F41518CF812C006320AA /* AddAssestsViewController.m */; };
-		E5E0F41818CF865F006320AA /* AddAssestsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E0F41718CF865F006320AA /* AddAssestsViewControllerTests.m */; };
+		E5E0F41618CF812C006320AA /* AddImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E0F41518CF812C006320AA /* AddImagesViewController.m */; };
+		E5E0F41818CF865F006320AA /* AddImagesViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E0F41718CF865F006320AA /* AddImagesViewControllerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,9 +100,9 @@
 		E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		E5E0F3FE18CF6242006320AA /* 2c-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2c-info.png"; sourceTree = "<group>"; };
 		E5E0F40018CF624A006320AA /* iPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoto.png; sourceTree = "<group>"; };
-		E5E0F41418CF812C006320AA /* AddAssestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAssestsViewController.h; sourceTree = "<group>"; };
-		E5E0F41518CF812C006320AA /* AddAssestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssestsViewController.m; sourceTree = "<group>"; };
-		E5E0F41718CF865F006320AA /* AddAssestsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssestsViewControllerTests.m; sourceTree = "<group>"; };
+		E5E0F41418CF812C006320AA /* AddImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddImagesViewController.h; sourceTree = "<group>"; };
+		E5E0F41518CF812C006320AA /* AddImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddImagesViewController.m; sourceTree = "<group>"; };
+		E5E0F41718CF865F006320AA /* AddImagesViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddImagesViewControllerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,8 +197,8 @@
 				E5223E81191AB2CE005E8476 /* Model */,
 				E5223E80191AB2C3005E8476 /* API */,
 				E5E0F3FE18CF6242006320AA /* 2c-info.png */,
-				E5E0F41418CF812C006320AA /* AddAssestsViewController.h */,
-				E5E0F41518CF812C006320AA /* AddAssestsViewController.m */,
+				E5E0F41418CF812C006320AA /* AddImagesViewController.h */,
+				E5E0F41518CF812C006320AA /* AddImagesViewController.m */,
 				E5494B5418A97F6C00402250 /* AddContactsViewController.h */,
 				E5494B5518A97F6C00402250 /* AddContactsViewController.m */,
 				E5D0916718FF04A800BD8A85 /* AddVideosViewController.h */,
@@ -229,7 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D0915618FDD1B100BD8A85 /* Mock */,
-				E5E0F41718CF865F006320AA /* AddAssestsViewControllerTests.m */,
+				E5E0F41718CF865F006320AA /* AddImagesViewControllerTests.m */,
 				E5494B6A18A97F6C00402250 /* AddContactsTests.m */,
 				E5494B6518A97F6C00402250 /* Supporting Files */,
 			);
@@ -376,7 +376,7 @@
 				E5223E87191AB333005E8476 /* AddPhotosModel.m in Sources */,
 				E5494B5018A97F6C00402250 /* AppDelegate.m in Sources */,
 				E5494B4C18A97F6C00402250 /* main.m in Sources */,
-				E5E0F41618CF812C006320AA /* AddAssestsViewController.m in Sources */,
+				E5E0F41618CF812C006320AA /* AddImagesViewController.m in Sources */,
 				E5D0916918FF04A800BD8A85 /* AddVideosViewController.m in Sources */,
 				E5D0916618FEE7B700BD8A85 /* ALAssetsLibrary+LibraryHelper.m in Sources */,
 			);
@@ -391,7 +391,7 @@
 				E5D0915F18FDD29200BD8A85 /* ALAssetMock.m in Sources */,
 				E5494B6B18A97F6C00402250 /* AddContactsTests.m in Sources */,
 				E5D0916118FDD29200BD8A85 /* ALAssetsGroupMock.m in Sources */,
-				E5E0F41818CF865F006320AA /* AddAssestsViewControllerTests.m in Sources */,
+				E5E0F41818CF865F006320AA /* AddImagesViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
