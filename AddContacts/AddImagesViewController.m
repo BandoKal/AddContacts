@@ -55,17 +55,26 @@ static NSString *const imageName = @"yoda";
     
     if (self.randomImageSwitch.on) {
     
-        UIView *customImageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3264, 2448)];
+        CGSize size = CGSizeMake(3264, 2448);
         
         UIColor *randomColor = [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1.0];
-        customImageView.backgroundColor = randomColor;
         
-        UIGraphicsBeginImageContext(customImageView.frame.size);
-        [customImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+
+        CGContextRef context = UIGraphicsGetCurrentContext();
+
+        // draw to the context here
+        CGContextSetFillColorWithColor(context, randomColor.CGColor);
+        CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
+
+        CGImageRef newCGImage = CGBitmapContextCreateImage(context);
         UIGraphicsEndImageContext();
+
+        UIImage *result = [UIImage imageWithCGImage:newCGImage scale:1.0 orientation: UIImageOrientationUp];
+        CGImageRelease(newCGImage);
         
-        return viewImage;
+        return result;
+
     } else {
         return [UIImage imageNamed:imageName];
     }
