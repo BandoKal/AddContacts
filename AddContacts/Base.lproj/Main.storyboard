@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -182,7 +182,7 @@
                                 <color key="progressTintColor" red="0.14956775489999999" green="1" blue="0.1205373637" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T6Z-jB-EQa">
-                                <rect key="frame" x="122" y="310" width="76" height="26"/>
+                                <rect key="frame" x="20" y="310" width="76" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -205,21 +205,39 @@
                                     <constraint firstAttribute="height" constant="245" id="OyX-od-COa"/>
                                 </constraints>
                             </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBj-UA-64q">
+                                <rect key="frame" x="251" y="307" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="randomImageSwitchChanged:" destination="R4H-49-8F7" eventType="valueChanged" id="gIe-hg-1H0"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKv-lZ-KHu">
+                                <rect key="frame" x="125" y="312" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UBj-UA-64q" firstAttribute="top" secondItem="dmA-Cf-yxi" secondAttribute="bottom" constant="17" id="0ZI-Ai-jn0"/>
                             <constraint firstAttribute="trailing" secondItem="dmA-Cf-yxi" secondAttribute="trailing" constant="20" id="1Sk-Le-Ytt"/>
                             <constraint firstItem="q1o-Ak-ytL" firstAttribute="top" secondItem="T6Z-jB-EQa" secondAttribute="bottom" constant="6" id="5ek-ho-yJ0"/>
                             <constraint firstItem="dmA-Cf-yxi" firstAttribute="leading" secondItem="hca-Ba-skh" secondAttribute="leading" constant="20" id="ACd-fO-zF2"/>
                             <constraint firstItem="UR0-VJ-wix" firstAttribute="top" secondItem="Gcx-Q8-Oxc" secondAttribute="bottom" constant="8" id="HFW-8I-VWN"/>
-                            <constraint firstAttribute="centerX" secondItem="T6Z-jB-EQa" secondAttribute="centerX" id="OEI-gg-nPm"/>
+                            <constraint firstAttribute="centerX" secondItem="T6Z-jB-EQa" secondAttribute="centerX" constant="102" id="OEI-gg-nPm"/>
                             <constraint firstItem="Gcx-Q8-Oxc" firstAttribute="centerX" secondItem="q1o-Ak-ytL" secondAttribute="centerX" id="XGM-68-iNb"/>
+                            <constraint firstItem="UBj-UA-64q" firstAttribute="leading" secondItem="FKv-lZ-KHu" secondAttribute="trailing" constant="8" id="Y35-PU-PzP"/>
                             <constraint firstAttribute="trailing" secondItem="q1o-Ak-ytL" secondAttribute="trailing" constant="20" id="YCA-Hv-0Nw"/>
                             <constraint firstItem="UJT-uv-V4P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UR0-VJ-wix" secondAttribute="bottom" constant="12" id="ZlP-rH-gXm"/>
                             <constraint firstAttribute="centerX" secondItem="q1o-Ak-ytL" secondAttribute="centerX" id="ak7-dt-5sK"/>
                             <constraint firstItem="UR0-VJ-wix" firstAttribute="leading" secondItem="hca-Ba-skh" secondAttribute="leading" constant="85" id="f5v-fc-Pe6"/>
+                            <constraint firstItem="FKv-lZ-KHu" firstAttribute="top" secondItem="dmA-Cf-yxi" secondAttribute="bottom" constant="22" id="jBA-jY-FPh"/>
                             <constraint firstItem="Gcx-Q8-Oxc" firstAttribute="top" secondItem="q1o-Ak-ytL" secondAttribute="bottom" constant="8" id="lSe-pE-Vr1"/>
                             <constraint firstItem="q1o-Ak-ytL" firstAttribute="leading" secondItem="hca-Ba-skh" secondAttribute="leading" constant="20" id="ml9-MI-QrT"/>
+                            <constraint firstItem="FKv-lZ-KHu" firstAttribute="leading" secondItem="T6Z-jB-EQa" secondAttribute="trailing" constant="29" id="sn9-2S-dCg"/>
                             <constraint firstItem="T6Z-jB-EQa" firstAttribute="top" secondItem="dmA-Cf-yxi" secondAttribute="bottom" constant="20" id="t0H-ne-7uJ"/>
                             <constraint firstItem="dmA-Cf-yxi" firstAttribute="top" secondItem="Tiq-h1-Zil" secondAttribute="bottom" constant="25" id="vjL-Bu-I3W"/>
                         </constraints>
@@ -227,8 +245,10 @@
                     <tabBarItem key="tabBarItem" title="Photos" image="iPhoto.png" id="RLv-xS-DB0"/>
                     <connections>
                         <outlet property="doneLabel" destination="Gcx-Q8-Oxc" id="0FD-k8-5Nw"/>
+                        <outlet property="imageViewToAdd" destination="dmA-Cf-yxi" id="vxh-38-AXj"/>
                         <outlet property="progressBarView" destination="q1o-Ak-ytL" id="6dQ-ox-qDC"/>
                         <outlet property="quantityTextField" destination="T6Z-jB-EQa" id="eLn-Qy-oLl"/>
+                        <outlet property="randomImageSwitch" destination="UBj-UA-64q" id="psn-rg-j04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fe6-ic-G0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
