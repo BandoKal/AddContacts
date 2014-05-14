@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ALAssetsLibrary+LibraryHelper.h"
+
 typedef void(^APICompletionBlock)(NSError *error);
 
 
@@ -20,11 +22,11 @@ typedef void(^APICompletionBlock)(NSError *error);
 
 @interface FeatureAPI : NSObject
 
-// public facing initializer TODO: May make this apart of the static accessor if not inited just init then.
--(BOOL)initializeFeatureAPI;
+@property (nonatomic, strong)id<FeatureAPIDelegate> delegate;
 
 // singleton accessor
 +(FeatureAPI*)singleFeatureAPI;
++(ALAssetsLibrary*)singleAlAssetsLibrary;
 
 // Add Contact Feature Set
 -(BOOL)requestAccessToABBook;
