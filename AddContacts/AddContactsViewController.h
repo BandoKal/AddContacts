@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddContactsViewController.h
 //  AddContacts
 //
 //  Created by Jason Bandy on 2/10/14.

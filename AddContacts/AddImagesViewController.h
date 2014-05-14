@@ -1,5 +1,5 @@
 //
-//  AddAssestsViewController.h
+//  AddImagesViewController.h
 //  AddContacts
 //
 //  Created by Jason Bandy on 3/11/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddAssestsViewController : UIViewController <UITextFieldDelegate>
+@interface AddImagesViewController : UIViewController <UITextFieldDelegate>
 
 @end

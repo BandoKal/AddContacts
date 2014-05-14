@@ -1,24 +1,23 @@
 //
-//  AddAssestsViewController.m
+//  AddImagesViewController.m
 //  AddContacts
 //
 //  Created by Jason Bandy on 3/11/14.
 //  Copyright (c) 2014 Jason Bandy. All rights reserved.
 //
 
-#import "AddAssestsViewController.h"
+#import "AddImagesViewController.h"
 #import "AppDelegate.h"
 #import "ALAsset+EditableAsset.h"
 #import "ALAssetsLibrary+LibraryHelper.h"
 
 static NSString *const imageName = @"yoda";
 
-@interface AddAssestsViewController (){
+@interface AddImagesViewController (){
     int imageCounter;
     BOOL isAddingImages, isRemovingImages;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewToAdd;
-@property (strong, nonatomic) IBOutlet UITextView *imageInfoView;
 @property (strong, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressBarView;
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
@@ -26,13 +25,18 @@ static NSString *const imageName = @"yoda";
 @property (strong, nonatomic) ALAssetsGroup *groupToSave;
 @property (strong, nonatomic) AppDelegate *appDelegate;
 @property (nonatomic) int numImages;
+@property (weak, nonatomic) IBOutlet UISwitch *randomImageSwitch;
+
+// Properties for hiding keyboard by touching off keyboard
+@property (strong, nonatomic) UIGestureRecognizer *tap;
+@property (strong, nonatomic) UITextField *textFieldWithFocus;
+
 @end
 
-@implementation AddAssestsViewController
+@implementation AddImagesViewController
 
 #pragma mark View Life Cycle Methods
-- (void)viewDidLoad
-{
+-(void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.imageViewToAdd.image = [self imageToAdd];
@@ -42,11 +46,38 @@ static NSString *const imageName = @"yoda";
     isAddingImages = NO;
     isRemovingImages = NO;
     
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tap.cancelsTouchesInView = NO;
 }
 
 #pragma mark Private Methods
--(UIImage *)imageToAdd{
-    return [UIImage imageNamed:imageName];
+-(UIImage *)imageToAdd {
+    
+    if (self.randomImageSwitch.on) {
+    
+        CGSize size = CGSizeMake(3264, 2448);
+        
+        UIColor *randomColor = [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1.0];
+        
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+
+        CGContextRef context = UIGraphicsGetCurrentContext();
+
+        // draw to the context here
+        CGContextSetFillColorWithColor(context, randomColor.CGColor);
+        CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
+
+        CGImageRef newCGImage = CGBitmapContextCreateImage(context);
+        UIGraphicsEndImageContext();
+
+        UIImage *result = [UIImage imageWithCGImage:newCGImage scale:1.0 orientation: UIImageOrientationUp];
+        CGImageRelease(newCGImage);
+        
+        return result;
+
+    } else {
+        return [UIImage imageNamed:imageName];
+    }
 }
 
 -(void)addImagesToAssets {
@@ -72,12 +103,10 @@ static NSString *const imageName = @"yoda";
                 [self addImagesToAssets];
             }
         }];
-    
 }
 
 #pragma mark - Utilities
-
--(BOOL)isTextFieldPostiveDigit:(UITextField*)textField{
+-(BOOL)isTextFieldPostiveDigit:(UITextField*)textField {
     NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
     NSCharacterSet *inputSet = [NSCharacterSet characterSetWithCharactersInString:textField.text];
     BOOL isNum = [alphaNums isSupersetOfSet:inputSet];
@@ -86,7 +115,7 @@ static NSString *const imageName = @"yoda";
 }
 
 #pragma mark IBAction Methods
-- (IBAction)userTouchedAddImagesWithSender:(UIButton *)sender {
+-(IBAction)userTouchedAddImagesWithSender:(UIButton *)sender {
     if (self.quantityTextField.isFirstResponder) {
         [self.quantityTextField resignFirstResponder];
     }
@@ -98,11 +127,28 @@ static NSString *const imageName = @"yoda";
     });
 }
 
+-(void)dismissKeyboard {
+    [self.textFieldWithFocus resignFirstResponder];
+}
+
+- (IBAction)randomImageSwitchChanged:(id)sender {
+    self.imageViewToAdd.image = [self imageToAdd];
+}
 
 #pragma mark UITextFieldDelegate Methods
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     self.doneLabel.hidden = YES;
     [self.progressBarView setProgress:0.0f animated:NO];
+    
+    self.textFieldWithFocus = textField;
+    [self.view addGestureRecognizer:self.tap];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.textFieldWithFocus) {
+        self.textFieldWithFocus = nil;
+        [self.view removeGestureRecognizer:self.tap];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {

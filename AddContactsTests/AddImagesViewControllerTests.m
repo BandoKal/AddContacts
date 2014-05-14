@@ -1,5 +1,5 @@
 //
-//  AddAssestsViewControllerTests.m
+//  AddImagesViewControllerTests.m
 //  AddContacts
 //
 //  Created by Jason Bandy on 3/11/14.
@@ -11,14 +11,14 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "OCMock.h"
-#import "AddAssestsViewController.h"
+#import "AddImagesViewController.h"
 #import "ALAssetsLibraryMock.h"
 
-@interface AddAssestsViewControllerTests : XCTestCase
+@interface AddImagesViewControllerTests : XCTestCase
 
 @end
 
-@interface AddAssestsViewController(AddAssestsVC_UnitTests)
+@interface AddImagesViewController(AddAssestsVC_UnitTests)
 
 @property (strong, nonatomic)UIImageView *imageViewToAdd;
 @property (strong, nonatomic)UITextView *imageInfoView;
@@ -43,8 +43,8 @@ void MethodClassSwizzle(Class c, SEL orig, SEL new) {
 
 static ALAuthorizationStatus staticMockAuthorizationStatus;
 
-@implementation AddAssestsViewControllerTests{
-    AddAssestsViewController *assetsViewController;
+@implementation AddImagesViewControllerTests{
+    AddImagesViewController *assetsViewController;
     UITextField *testField;
 }
 
@@ -57,7 +57,7 @@ static ALAuthorizationStatus staticMockAuthorizationStatus;
 {
     [super setUp];
     // Put setup code here. This method is called before te invocation of each test method in the class.
-    assetsViewController = [[AddAssestsViewController alloc]init];
+    assetsViewController = [[AddImagesViewController alloc]init];
     
     ALAssetsLibraryMock * mockLib = [[ALAssetsLibraryMock alloc]init];
     assetsViewController.assetsLibrary =  mockLib;

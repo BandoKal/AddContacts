@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  AddContactsViewController.m
 //  AddContacts
 //
 //  Created by Jason Bandy on 2/10/14.
@@ -36,14 +36,16 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property BOOL accessGranted;
 
+// Properties for hiding keyboard by touching off keyboard
+@property (strong, nonatomic) UIGestureRecognizer *tap;
+@property (strong, nonatomic) UITextField *textFieldWithFocus;
 
 @end
 
 @implementation AddContactsViewController
 
 #pragma mark - View Life Cycle Methods
-
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.accessGranted = NO;
@@ -52,10 +54,12 @@ typedef enum {
     //disabling this button while the operation doesn't work
     self.removeAddedContactsButton.enabled = NO;
     [self.removeAddedContactsButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    self.tap.cancelsTouchesInView = NO;
 }
 
-- (void)didReceiveMemoryWarning
-{
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -76,7 +80,6 @@ typedef enum {
 }
 
 #pragma mark - Private Methods
-
 -(void)accessGrantedForAddressBook {
     self.accessGranted = YES;
 }
@@ -266,17 +269,28 @@ typedef enum {
     });
 }
 
-#pragma mark - UITextField Delegate Methods
+-(void)dismissKeyboard {
+    [self.textFieldWithFocus resignFirstResponder];
+}
 
+#pragma mark - UITextField Delegate Methods
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     self.statusLabel.hidden = YES;
     textField.text = nil;
+    
+    self.textFieldWithFocus = textField;
+    [self.view addGestureRecognizer:self.tap];
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.textFieldWithFocus) {
+        self.textFieldWithFocus = nil;
+        [self.view removeGestureRecognizer:self.tap];
+    }
+}
 
 #pragma mark - IBAction Methods
-
-- (IBAction)userTouchedGoButtonWithSender:(UIButton *)sender {
+-(IBAction)userTouchedGoButtonWithSender:(UIButton *)sender {
     self.statusLabel.hidden = YES;
     [self.createQuantityTextField resignFirstResponder];
     [self.activityIndicator startAnimating];
@@ -296,7 +310,8 @@ typedef enum {
     removeAllConfirmAlert.tag = DELETE_ALL_CONFIRM_ALERT;
     [removeAllConfirmAlert show];
 }
-- (IBAction)userTouchedRemoveAddedContactsWithSender:(UIButton *)sender {
+
+-(IBAction)userTouchedRemoveAddedContactsWithSender:(UIButton *)sender {
     self.statusLabel.hidden = YES;
     [self.createQuantityTextField resignFirstResponder];
     [self.activityIndicator startAnimating];
@@ -307,7 +322,7 @@ typedef enum {
     }
 }
 
-- (IBAction)userTouchedRemoveXContactsWithSender:(id)sender {
+-(IBAction)userTouchedRemoveXContactsWithSender:(id)sender {
     self.statusLabel.hidden = YES;
     [self.deleteQuantityTextField resignFirstResponder];
     [self.activityIndicator startAnimating];
@@ -319,15 +334,14 @@ typedef enum {
 }
 
 #pragma mark - Helpers
-
-- (void)updateProgressLabelText: (int)currentlyOn total:(int)total {
+-(void)updateProgressLabelText: (int)currentlyOn total:(int)total {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
      self.progressLabel.text = [NSString stringWithFormat:@"%i/%i", currentlyOn + 1, total];
     });
 }
 
 #pragma mark - UIAlertView Delegate Methods
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (alertView.tag != DELETE_ALL_CONFIRM_ALERT) {
         return;
     }
