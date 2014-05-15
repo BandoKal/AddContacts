@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D480466119251FCC00557A4F /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D480466019251FCC00557A4F /* ImageManager.m */; };
 		E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E83191AB300005E8476 /* FeatureAPI.m */; };
-		E5223E87191AB333005E8476 /* AddPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E86191AB333005E8476 /* AddPhotosModel.m */; };
 		E5223E8A191AB345005E8476 /* AddVideosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E89191AB345005E8476 /* AddVideosModel.m */; };
 		E5223E8D191AB355005E8476 /* AddContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E8C191AB355005E8476 /* AddContactsModel.m */; };
 		E5494B4018A97F6C00402250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B3F18A97F6C00402250 /* Foundation.framework */; };
@@ -54,10 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D480465F19251FCC00557A4F /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
+		D480466019251FCC00557A4F /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
 		E5223E82191AB300005E8476 /* FeatureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureAPI.h; sourceTree = "<group>"; };
 		E5223E83191AB300005E8476 /* FeatureAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureAPI.m; sourceTree = "<group>"; };
-		E5223E85191AB333005E8476 /* AddPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotosModel.h; sourceTree = "<group>"; };
-		E5223E86191AB333005E8476 /* AddPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotosModel.m; sourceTree = "<group>"; };
 		E5223E88191AB345005E8476 /* AddVideosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVideosModel.h; sourceTree = "<group>"; };
 		E5223E89191AB345005E8476 /* AddVideosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVideosModel.m; sourceTree = "<group>"; };
 		E5223E8B191AB355005E8476 /* AddContactsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactsModel.h; sourceTree = "<group>"; };
@@ -134,6 +134,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D480465E19251FAD00557A4F /* ImageHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				D480465F19251FCC00557A4F /* ImageManager.h */,
+				D480466019251FCC00557A4F /* ImageManager.m */,
+			);
+			name = ImageHelpers;
+			sourceTree = "<group>";
+		};
 		E5223E80191AB2C3005E8476 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				E5D0916318FEE77D00BD8A85 /* Library_Helpers */,
-				E5223E85191AB333005E8476 /* AddPhotosModel.h */,
-				E5223E86191AB333005E8476 /* AddPhotosModel.m */,
 				E5223E88191AB345005E8476 /* AddVideosModel.h */,
 				E5223E89191AB345005E8476 /* AddVideosModel.m */,
 				E5223E8B191AB355005E8476 /* AddContactsModel.h */,
@@ -194,6 +201,7 @@
 		E5494B4518A97F6C00402250 /* AddContacts */ = {
 			isa = PBXGroup;
 			children = (
+				D480465E19251FAD00557A4F /* ImageHelpers */,
 				E5223E81191AB2CE005E8476 /* Model */,
 				E5223E80191AB2C3005E8476 /* API */,
 				E5E0F3FE18CF6242006320AA /* 2c-info.png */,
@@ -369,11 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D480466119251FCC00557A4F /* ImageManager.m in Sources */,
 				E5223E8D191AB355005E8476 /* AddContactsModel.m in Sources */,
 				E5494B5618A97F6C00402250 /* AddContactsViewController.m in Sources */,
 				E5223E8A191AB345005E8476 /* AddVideosModel.m in Sources */,
 				E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */,
-				E5223E87191AB333005E8476 /* AddPhotosModel.m in Sources */,
 				E5494B5018A97F6C00402250 /* AppDelegate.m in Sources */,
 				E5494B4C18A97F6C00402250 /* main.m in Sources */,
 				E5E0F41618CF812C006320AA /* AddImagesViewController.m in Sources */,
