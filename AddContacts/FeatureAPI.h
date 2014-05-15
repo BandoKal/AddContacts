@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ALAssetsLibrary+LibraryHelper.h"
+#import "ImageManager.h"
 
 typedef void(^APICompletionBlock)(NSError *error);
 
@@ -16,11 +16,11 @@ typedef void(^APICompletionBlock)(NSError *error);
 
 @required
 // use this method to update the controllers of any update.
--(void)statusUpdateFromModelWithInfoObject:(float)percentComplete error:(NSError*)error;
+-(void)statusUpdateFromModelWithInfoObject:(id)infoObject error:(NSError*)error;
 
 @end
 
-@interface FeatureAPI : NSObject
+@interface FeatureAPI : NSObject <ImageManagerDelegate>
 
 @property (nonatomic, strong)id<FeatureAPIDelegate> delegate;
 
