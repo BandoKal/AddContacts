@@ -95,9 +95,9 @@
     self.imageOperationCompletionBlock(error);
 }
 
--(void)imageOperationFailedPartiallyWithError:(NSError *)error {
+-(void)imageOperationFailedPartiallyWithError:(NSError *)error onObject:(id)failedObject {
     NSLog(@"Image operation failed with error: %@", error);
-    [self.delegate statusUpdateFromModelWithInfoObject:0 error:error];
+    [self.delegate statusUpdateFromModelWithInfoObject:failedObject error:error];
 }
 
 @end
