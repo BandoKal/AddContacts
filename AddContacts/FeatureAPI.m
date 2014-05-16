@@ -68,12 +68,9 @@
     [self.imageManager addImages:imagesToAdd toAlbum:albumName];
 }
 
--(void)addRandomPhotosWithCount:(NSUInteger*)imageCount toAlbumName:(NSString*)albumName withCompletionBlock:(APICompletionBlock)completionBlock {
-    NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
-    for (int i = 0; i < (int)imageCount; i++) {
-        [imagesToAdd addObject:[self.imageManager generateRandomImage]];
-    }
-    [self addPhotos:imagesToAdd toAlbumName:albumName withCompletionBlock:completionBlock];
+-(void)addRandomPhotosWithCount:(NSUInteger)imageCount toAlbumName:(NSString*)albumName withCompletionBlock:(APICompletionBlock)completionBlock {
+    self.imageOperationCompletionBlock = completionBlock;
+    [self.imageManager addRandomImagesWithCount:imageCount toAlbum:albumName];
 }
 
 #pragma mark - Private Methods

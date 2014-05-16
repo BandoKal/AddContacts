@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D480466119251FCC00557A4F /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D480466019251FCC00557A4F /* ImageManager.m */; };
+		D4FFAC831926655C00FD496F /* base_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4FFAC821926655C00FD496F /* base_image.jpg */; };
 		E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E83191AB300005E8476 /* FeatureAPI.m */; };
 		E5223E8A191AB345005E8476 /* AddVideosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E89191AB345005E8476 /* AddVideosModel.m */; };
 		E5223E8D191AB355005E8476 /* AddContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E8C191AB355005E8476 /* AddContactsModel.m */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		D480465F19251FCC00557A4F /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
 		D480466019251FCC00557A4F /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
+		D4FFAC821926655C00FD496F /* base_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = base_image.jpg; sourceTree = "<group>"; };
 		E5223E82191AB300005E8476 /* FeatureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureAPI.h; sourceTree = "<group>"; };
 		E5223E83191AB300005E8476 /* FeatureAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureAPI.m; sourceTree = "<group>"; };
 		E5223E88191AB345005E8476 /* AddVideosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVideosModel.h; sourceTree = "<group>"; };
@@ -214,9 +216,10 @@
 				E5494B4E18A97F6C00402250 /* AppDelegate.h */,
 				E5494B4F18A97F6C00402250 /* AppDelegate.m */,
 				E5494B5718A97F6C00402250 /* Images.xcassets */,
-				E5E0F40018CF624A006320AA /* iPhoto.png */,
 				E5D24BCC18D0DF3800514A49 /* Main.storyboard */,
 				E5494B4618A97F6C00402250 /* Supporting Files */,
+				E5E0F40018CF624A006320AA /* iPhoto.png */,
+				D4FFAC821926655C00FD496F /* base_image.jpg */,
 				E5494B7E18ADED7A00402250 /* yoda.png */,
 			);
 			path = AddContacts;
@@ -358,6 +361,7 @@
 				E5494B5818A97F6C00402250 /* Images.xcassets in Resources */,
 				E5D24BCE18D0DF3800514A49 /* Main.storyboard in Resources */,
 				E5494B4A18A97F6C00402250 /* InfoPlist.strings in Resources */,
+				D4FFAC831926655C00FD496F /* base_image.jpg in Resources */,
 				E5E0F40118CF624A006320AA /* iPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

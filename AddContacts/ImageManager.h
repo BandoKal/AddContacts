@@ -36,6 +36,9 @@ typedef NS_ENUM(NSInteger, BCGImageManipulationErrorCode) {
 -(instancetype)initWithAssetsLibrary:(ALAssetsLibrary *)assetsLibrary delegate:(id<ImageManagerDelegate>)delegateToAdd;
 
 -(void)addImages:(NSArray *)imagesToAdd toAlbum:(NSString *)album;
+-(void)addRandomImagesWithCount:(NSUInteger)numberOfImages toAlbum:(NSString *)album;
+
 -(UIImage *)generateRandomImage;
+-(NSArray *)generateRandomImagesWithCount:(NSUInteger)numberOfImages __attribute__((unavailable("currently has a memory leak; temporarily unavailable; use addRandomImagesWithCount:toAlbum: instead")));
 
 @end

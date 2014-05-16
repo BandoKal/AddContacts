@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "ALAsset+EditableAsset.h"
 #import "ALAssetsLibrary+LibraryHelper.h"
+#import "FeatureAPI.h"
 
 static NSString *const imageName = @"yoda";
 
@@ -53,31 +54,31 @@ static NSString *const imageName = @"yoda";
 #pragma mark Private Methods
 -(UIImage *)imageToAdd {
     
-    if (self.randomImageSwitch.on) {
-    
-        CGSize size = CGSizeMake(3264, 2448);
-        
-        UIColor *randomColor = [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1.0];
-        
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-
-        CGContextRef context = UIGraphicsGetCurrentContext();
-
-        // draw to the context here
-        CGContextSetFillColorWithColor(context, randomColor.CGColor);
-        CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
-
-        CGImageRef newCGImage = CGBitmapContextCreateImage(context);
-        UIGraphicsEndImageContext();
-
-        UIImage *result = [UIImage imageWithCGImage:newCGImage scale:1.0 orientation: UIImageOrientationUp];
-        CGImageRelease(newCGImage);
-        
-        return result;
-
-    } else {
+//    if (self.randomImageSwitch.on) {
+//    
+//        CGSize size = CGSizeMake(3264, 2448);
+//        
+//        UIColor *randomColor = [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1.0];
+//        
+//        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+//
+//        CGContextRef context = UIGraphicsGetCurrentContext();
+//
+//        // draw to the context here
+//        CGContextSetFillColorWithColor(context, randomColor.CGColor);
+//        CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
+//
+//        CGImageRef newCGImage = CGBitmapContextCreateImage(context);
+//        UIGraphicsEndImageContext();
+//
+//        UIImage *result = [UIImage imageWithCGImage:newCGImage scale:1.0 orientation: UIImageOrientationUp];
+//        CGImageRelease(newCGImage);
+//        
+//        return result;
+//
+//    } else {
         return [UIImage imageNamed:imageName];
-    }
+//    }
 }
 
 -(void)addImagesToAssets {
@@ -123,8 +124,12 @@ static NSString *const imageName = @"yoda";
     self.progressBarView.progressTintColor = [UIColor greenColor];
     imageCounter = 0;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self addImagesToAssets];
+        //        [self addImagesToAssets];
+        [FeatureAPI.singleFeatureAPI addRandomPhotosWithCount:self.quantityTextField.text.intValue toAlbumName:@"Test Photos!" withCompletionBlock:^(NSError *error) {
+            NSLog(@"completion");
+        }];
     });
+    
 }
 
 -(void)dismissKeyboard {

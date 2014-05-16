@@ -77,12 +77,12 @@
             completionBlock(error);
             return;
         }
-
+        
         completionBlock(nil);
         // Calling Add Asset to Album appears to cause a memory leak issue..
-//        [self addAssetURL:assetURL
-//                  toAlbum:albumName
-//      withCompletionBlock:completionBlock];
+        //        [self addAssetURL:assetURL
+        //                  toAlbum:albumName
+        //      withCompletionBlock:completionBlock];
     }];
     
 }
