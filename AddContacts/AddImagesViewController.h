@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeatureAPI.h"
 
-@interface AddImagesViewController : UIViewController <UITextFieldDelegate>
+@interface AddImagesViewController : UIViewController <UITextFieldDelegate, FeatureAPIDelegate>
 
 @end

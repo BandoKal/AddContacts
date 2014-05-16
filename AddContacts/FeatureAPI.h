@@ -22,7 +22,11 @@ typedef void(^APICompletionBlock)(NSError *error);
 
 @interface FeatureAPI : NSObject <ImageManagerDelegate>
 
-@property (nonatomic, strong)id<FeatureAPIDelegate> delegate;
+//TODO: Change to array so multiple delegates could be simultaneously set up
+@property (nonatomic, strong) id<FeatureAPIDelegate> delegate;
+
+//TODO: Add method to register as delegate
+//TODO: Add method to unregister as delegate
 
 // singleton accessor
 +(FeatureAPI*)singleFeatureAPI;
@@ -37,5 +41,7 @@ typedef void(^APICompletionBlock)(NSError *error);
 -(void)addPhotos:(NSArray*)imagesToAdd toAlbumName:(NSString*)albumName withCompletionBlock:(APICompletionBlock)completionBlock;
 // This API call will use the random image generator
 -(void)addRandomPhotosWithCount:(NSUInteger)imageCount toAlbumName:(NSString*)albumName withCompletionBlock:(APICompletionBlock)completionBlock;
+
+//TODO: Add ability to cancel image operation that's in progress
 
 @end

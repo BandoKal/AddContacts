@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -244,6 +244,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Photos" image="iPhoto.png" id="RLv-xS-DB0"/>
                     <connections>
+                        <outlet property="addImagesButton" destination="UR0-VJ-wix" id="HfG-PK-lco"/>
                         <outlet property="doneLabel" destination="Gcx-Q8-Oxc" id="0FD-k8-5Nw"/>
                         <outlet property="imageViewToAdd" destination="dmA-Cf-yxi" id="vxh-38-AXj"/>
                         <outlet property="progressBarView" destination="q1o-Ak-ytL" id="6dQ-ox-qDC"/>

@@ -65,15 +65,17 @@
 #pragma mark Photo Feature Set
 -(void)addPhotos:(NSArray*)imagesToAdd toAlbumName:(NSString*)albumName withCompletionBlock:(APICompletionBlock)completionBlock {
     self.imageOperationCompletionBlock = completionBlock;
-    [self.imageManager addImages:imagesToAdd toAlbum:albumName];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.imageManager addImages:imagesToAdd toAlbum:albumName];
+    });
 }
 
 -(void)addRandomPhotosWithCount:(NSUInteger)imageCount toAlbumName:(NSString*)albumName withCompletionBlock:(APICompletionBlock)completionBlock {
     self.imageOperationCompletionBlock = completionBlock;
-    [self.imageManager addRandomImagesWithCount:imageCount toAlbum:albumName];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.imageManager addRandomImagesWithCount:imageCount toAlbum:albumName];
+    });
 }
-
-#pragma mark - Private Methods
 
 #pragma mark Image Manager Delegate Handlers
 -(void)currentProgress:(NSUInteger)currentProgress ofTotal:(NSUInteger)total {

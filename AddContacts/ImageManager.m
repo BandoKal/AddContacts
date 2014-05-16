@@ -50,31 +50,29 @@ NSUInteger const BCGsecondsToWaitImportingOneImage = 10;
         return;
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        __block NSError *errorThatOccurred = nil;
-        for (int i=0; i<imagesToAdd.count; i++) {
-            UIImage *currentImage = [imagesToAdd objectAtIndex:i];
-            
-            dispatch_semaphore_t addingOneImage = dispatch_semaphore_create(0);
-            [self addImage:currentImage toAlbum:album withCompletionBlock:^(NSError *error) {
-                errorThatOccurred = error;
-                dispatch_semaphore_signal(addingOneImage);
-            }];
-            // This semaphpore waits forever, but the one inside addImage does not wait forever
-            dispatch_semaphore_wait(addingOneImage, DISPATCH_TIME_FOREVER);
-            
-            if (errorThatOccurred != nil) {
-                [self notifyDelegatesOfPartialFailureWithError:errorThatOccurred onObject:currentImage];
-                break;
-            }
-            
-            [self notifyDelegatesOfCurrentProgress:i+1 ofTotal:imagesToAdd.count];
+    __block NSError *errorThatOccurred = nil;
+    for (int i=0; i<imagesToAdd.count; i++) {
+        UIImage *currentImage = [imagesToAdd objectAtIndex:i];
+        
+        dispatch_semaphore_t addingOneImage = dispatch_semaphore_create(0);
+        [self addImage:currentImage toAlbum:album withCompletionBlock:^(NSError *error) {
+            errorThatOccurred = error;
+            dispatch_semaphore_signal(addingOneImage);
+        }];
+        // This semaphpore waits forever, but the one inside addImage does not wait forever
+        dispatch_semaphore_wait(addingOneImage, DISPATCH_TIME_FOREVER);
+        
+        if (errorThatOccurred != nil) {
+            [self notifyDelegatesOfPartialFailureWithError:errorThatOccurred onObject:currentImage];
+            break;
         }
         
-        if (errorThatOccurred == nil) {
-            [self notifyDelegatesOfSuccessfulCompletion];
-        }
-    });
+        [self notifyDelegatesOfCurrentProgress:i+1 ofTotal:imagesToAdd.count];
+    }
+    
+    if (errorThatOccurred == nil) {
+        [self notifyDelegatesOfSuccessfulCompletion];
+    }
 }
 
 -(void)addRandomImagesWithCount:(NSUInteger)numberOfImages toAlbum:(NSString *)album {

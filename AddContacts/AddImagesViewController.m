@@ -7,26 +7,28 @@
 //
 
 #import "AddImagesViewController.h"
-#import "AppDelegate.h"
 #import "ALAsset+EditableAsset.h"
 #import "ALAssetsLibrary+LibraryHelper.h"
-#import "FeatureAPI.h"
+#import "AppDelegate.h"
 
 static NSString *const imageName = @"yoda";
+static NSString *const baseImageForRandomImages = @"base_image.jpg";
 
 @interface AddImagesViewController (){
-    int imageCounter;
-    BOOL isAddingImages, isRemovingImages;
+    BOOL _isRemovingImages;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewToAdd;
 @property (strong, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressBarView;
-@property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) IBOutlet UILabel *doneLabel;
-@property (strong, nonatomic) ALAssetsGroup *groupToSave;
-@property (strong, nonatomic) AppDelegate *appDelegate;
-@property (nonatomic) int numImages;
 @property (weak, nonatomic) IBOutlet UISwitch *randomImageSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *addImagesButton;
+
+@property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
+@property (strong, nonatomic) FeatureAPI *featureAPI;
+
+@property (nonatomic, getter = isAddingImages) BOOL addingImages;
 
 // Properties for hiding keyboard by touching off keyboard
 @property (strong, nonatomic) UIGestureRecognizer *tap;
@@ -39,79 +41,79 @@ static NSString *const imageName = @"yoda";
 #pragma mark View Life Cycle Methods
 -(void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.imageViewToAdd.image = [self imageToAdd];
-    self.assetsLibrary = [[ALAssetsLibrary alloc]init];
-    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    self.assetsLibrary = FeatureAPI.singleAlAssetsLibrary;
+    self.appDelegate = (AppDelegate*)UIApplication.sharedApplication.delegate;
     self.quantityTextField.delegate = self;
-    isAddingImages = NO;
-    isRemovingImages = NO;
+    
+    [self markImageOperationAsEnded];
+    self.imageViewToAdd.image = [self imageToShow];
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     self.tap.cancelsTouchesInView = NO;
 }
 
-#pragma mark Private Methods
--(UIImage *)imageToAdd {
+-(void)viewWillAppear:(BOOL)animated {
+    self.featureAPI.delegate = self;
     
-//    if (self.randomImageSwitch.on) {
-//    
-//        CGSize size = CGSizeMake(3264, 2448);
-//        
-//        UIColor *randomColor = [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1.0];
-//        
-//        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-//
-//        CGContextRef context = UIGraphicsGetCurrentContext();
-//
-//        // draw to the context here
-//        CGContextSetFillColorWithColor(context, randomColor.CGColor);
-//        CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
-//
-//        CGImageRef newCGImage = CGBitmapContextCreateImage(context);
-//        UIGraphicsEndImageContext();
-//
-//        UIImage *result = [UIImage imageWithCGImage:newCGImage scale:1.0 orientation: UIImageOrientationUp];
-//        CGImageRelease(newCGImage);
-//        
-//        return result;
-//
-//    } else {
-        return [UIImage imageNamed:imageName];
-//    }
-}
-
--(void)addImagesToAssets {
-    self.numImages = self.quantityTextField.text.intValue;
-    if (imageCounter == self.numImages) {
-        [self.progressBarView setProgress:0.0f animated:NO];
-        self.quantityTextField.text = @"";
-        self.doneLabel.hidden = NO;
-        return;
+    if (self.isAddingImages) {
+        UIApplication.sharedApplication.idleTimerDisabled = YES;
     }
-    [self.assetsLibrary saveImage:[self imageToAdd] toAlbum:@"Test Photos!" withCompletionBlock:^( NSError *error) {
-            if (error) {
-                // report the error
-                NSLog(@"Error in adding Image... %@", error.localizedDescription);
-                imageCounter--;
-            }else{
-                //report success
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    float progress = (float)(imageCounter)/(float)self.numImages;
-                    [self.progressBarView setProgress:progress animated:YES];
-                });
-                imageCounter++;
-                [self addImagesToAssets];
-            }
-        }];
 }
 
-#pragma mark - Utilities
--(BOOL)isTextFieldPostiveDigit:(UITextField*)textField {
+-(void)viewWillDisappear:(BOOL)animated {
+    self.featureAPI.delegate = nil;
+    
+    UIApplication.sharedApplication.idleTimerDisabled = NO;
+}
+
+#pragma mark Internal Helpers
+-(void)dismissKeyboard {
+    [self.textFieldWithFocus resignFirstResponder];
+}
+
+-(UIImage *)imageToShow {
+    if (self.randomImageSwitch.on) {
+        return [UIImage imageNamed:baseImageForRandomImages];
+    } else {
+        return [UIImage imageNamed:imageName];
+    }
+}
+
+-(void)markImageOperationAsStarting {
+    self.addingImages = YES;
+    
+    self.quantityTextField.enabled = NO;
+    self.randomImageSwitch.enabled = NO;
+    self.addImagesButton.enabled = NO;
+    [self.addImagesButton setTitle:@"Adding Images..." forState:UIControlStateNormal];
+    
+    self.doneLabel.hidden = YES;
+    self.progressBarView.progressTintColor = [UIColor greenColor];
+    [self.progressBarView setProgress:0.0f animated:NO];
+    
+    UIApplication.sharedApplication.idleTimerDisabled = YES;
+}
+
+-(void)markImageOperationAsEnded {
+    self.addingImages = NO;
+    
+    self.quantityTextField.text = @"";
+    self.quantityTextField.enabled = YES;
+    self.randomImageSwitch.enabled = YES;
+    self.addImagesButton.enabled = YES;
+    [self.addImagesButton setTitle:@"Add Images" forState:UIControlStateNormal];
+    
+    UIApplication.sharedApplication.idleTimerDisabled = NO;
+}
+
+#pragma mark Utilities
+-(BOOL)isTextFieldPostiveDigit:(UITextField *)textField {
     NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
     NSCharacterSet *inputSet = [NSCharacterSet characterSetWithCharactersInString:textField.text];
     BOOL isNum = [alphaNums isSupersetOfSet:inputSet];
     BOOL isPositive = [textField.text intValue] > 0;
+    
     return isNum && isPositive;
 }
 
@@ -120,24 +122,37 @@ static NSString *const imageName = @"yoda";
     if (self.quantityTextField.isFirstResponder) {
         [self.quantityTextField resignFirstResponder];
     }
-    self.doneLabel.hidden = YES;
-    self.progressBarView.progressTintColor = [UIColor greenColor];
-    imageCounter = 0;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //        [self addImagesToAssets];
-        [FeatureAPI.singleFeatureAPI addRandomPhotosWithCount:self.quantityTextField.text.intValue toAlbumName:@"Test Photos!" withCompletionBlock:^(NSError *error) {
-            NSLog(@"completion");
-        }];
-    });
     
-}
-
--(void)dismissKeyboard {
-    [self.textFieldWithFocus resignFirstResponder];
+    if ([self isTextFieldPostiveDigit:self.quantityTextField] == NO) {
+        //TODO: Notify user what's wrong (dialog?)
+        NSLog(@"Add Images pressed without positive number in text field");
+        return;
+    }
+    
+    [self markImageOperationAsStarting];
+    [FeatureAPI.singleFeatureAPI addRandomPhotosWithCount:self.quantityTextField.text.intValue toAlbumName:@"Test Photos!" withCompletionBlock:^(NSError *error) {
+        NSLog(@"Adding photos complete!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.doneLabel.hidden = NO;
+            [self markImageOperationAsEnded];
+        });
+    }];
 }
 
 - (IBAction)randomImageSwitchChanged:(id)sender {
-    self.imageViewToAdd.image = [self imageToAdd];
+    self.imageViewToAdd.image = [self imageToShow];
+}
+
+#pragma mark FeatureAPIDelegate Methods
+-(void)statusUpdateFromModelWithInfoObject:(id)infoObject error:(NSError *)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (error != nil) {
+            [self markImageOperationAsEnded];
+        } else {
+            NSNumber *progressNumber = (NSNumber *)infoObject;
+            [self.progressBarView setProgress:[progressNumber floatValue] animated:YES];
+        }
+    });
 }
 
 #pragma mark UITextFieldDelegate Methods
@@ -158,8 +173,15 @@ static NSString *const imageName = @"yoda";
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    self.numImages = textField.text.intValue;
     return [self isTextFieldPostiveDigit:textField];
+}
+
+#pragma mark Lazy Loaded Properties
+-(FeatureAPI *)featureAPI {
+    if (_featureAPI == nil) {
+        _featureAPI = FeatureAPI.singleFeatureAPI;
+    }
+    return _featureAPI;
 }
 
 @end
