@@ -80,35 +80,38 @@
 #pragma mark Video Feature Set
 
 -(void)addVideoWithFileSize:(NSUInteger)fileSize withCompletionBlock:(APICompletionBlock)completionBlock{
-    NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 300; i++) {
-        
-        [imagesToAdd addObject:[self.imageManager generateRandomImage]];
-    }
-    [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
+        for (int i = 0; i < 300; i++) {
+            
+            [imagesToAdd addObject:[self.imageManager generateRandomImage]];
+        }
+        [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
+    });
 }
 
 -(void)addVideoWithDuration:(int) duration withCompletionBlock:(APICompletionBlock)completionBlock {
-    NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 10; i++) {
-        
-        [imagesToAdd addObject:[self.imageManager generateRandomImage]];
-    }
-    [AddVideosModel.videoManager addRandomVideoForDuration:duration images:imagesToAdd];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* docDir = [paths objectAtIndex:0];
-    
-    NSString *filePath = [docDir stringByAppendingPathComponent:[NSString stringWithFormat:@"myMovie.mov"]];
-    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
-    [FeatureAPI.singleAlAssetsLibrary writeVideoAtPathToSavedPhotosAlbum:fileURL completionBlock:^(NSURL *assetURL, NSError *error) {
-        if (error) {
-            NSLog(@"%@",error.localizedDescription);
-            completionBlock(error);
-        }else {
-            completionBlock(nil);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
+        for (int i = 0; i < 10; i++) {
+            [imagesToAdd addObject:[self.imageManager generateRandomImage]];
         }
-    }];
+        [AddVideosModel.videoManager addRandomVideoForDuration:duration images:imagesToAdd];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docDir = [paths objectAtIndex:0];
+        
+        NSString *filePath = [docDir stringByAppendingPathComponent:[NSString stringWithFormat:@"myMovie.mov"]];
+        NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+        [FeatureAPI.singleAlAssetsLibrary writeVideoAtPathToSavedPhotosAlbum:fileURL completionBlock:^(NSURL *assetURL, NSError *error) {
+            if (error) {
+                NSLog(@"%@",error.localizedDescription);
+                completionBlock(error);
+            } else {
+                completionBlock(nil);
+            }
+        }];
+    });
 }
 
 

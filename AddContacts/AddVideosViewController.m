@@ -106,7 +106,6 @@
     }
     
     [self markVideoOperationAsStarting];
-    
     [FeatureAPI.singleFeatureAPI addVideoWithDuration:1000 withCompletionBlock:^(NSError *error) {
         NSLog(@"Adding videos complete!");
         dispatch_async(dispatch_get_main_queue(), ^{
