@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fX-El-9vQ">
-                                <rect key="frame" x="120" y="35" width="174" height="60"/>
+                                <rect key="frame" x="120" y="35" width="180" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Create Contacts">
@@ -378,7 +378,7 @@
                             <constraint firstAttribute="trailing" secondItem="Elb-3H-7qi" secondAttribute="trailing" id="ubJ-3h-w3K"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Videos" image="2c-info.png" id="VyS-HO-Xkg"/>
+                    <tabBarItem key="tabBarItem" title="Videos" image="Camcoder.png" id="VyS-HO-Xkg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91f-15-Giv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -416,6 +416,7 @@
     </scenes>
     <resources>
         <image name="2c-info.png" width="35" height="35"/>
+        <image name="Camcoder.png" width="25" height="25"/>
         <image name="iPhoto.png" width="25" height="25"/>
         <image name="yoda.png" width="440" height="367"/>
     </resources>

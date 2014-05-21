@@ -30,6 +30,7 @@
 		E550A566192D235700EE8BB0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E550A565192D235700EE8BB0 /* CoreVideo.framework */; };
 		E550A568192D235F00EE8BB0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E550A567192D235F00EE8BB0 /* CoreMedia.framework */; };
 		E550A56A192D236700EE8BB0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E550A569192D236700EE8BB0 /* AVFoundation.framework */; };
+		E550A56C192D2C8F00EE8BB0 /* Camcoder.png in Resources */ = {isa = PBXBuildFile; fileRef = E550A56B192D2C8F00EE8BB0 /* Camcoder.png */; };
 		E59C583D18D0D6E300FF990C /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59C583B18D0BC8200FF990C /* libOCMock.a */; };
 		E5D0915F18FDD29200BD8A85 /* ALAssetMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915818FDD29200BD8A85 /* ALAssetMock.m */; };
 		E5D0916018FDD29200BD8A85 /* ALAssetRepresentationMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915A18FDD29200BD8A85 /* ALAssetRepresentationMock.m */; };
@@ -91,6 +92,7 @@
 		E550A565192D235700EE8BB0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E550A567192D235F00EE8BB0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E550A569192D236700EE8BB0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E550A56B192D2C8F00EE8BB0 /* Camcoder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camcoder.png; sourceTree = "<group>"; };
 		E59C583B18D0BC8200FF990C /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/library/libOCMock.a; sourceTree = "<group>"; };
 		E5D0915718FDD29200BD8A85 /* ALAssetMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetMock.h; sourceTree = "<group>"; };
 		E5D0915818FDD29200BD8A85 /* ALAssetMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetMock.m; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				E5D24BCC18D0DF3800514A49 /* Main.storyboard */,
 				E5494B4618A97F6C00402250 /* Supporting Files */,
 				E5E0F40018CF624A006320AA /* iPhoto.png */,
+				E550A56B192D2C8F00EE8BB0 /* Camcoder.png */,
 				D4FFAC821926655C00FD496F /* base_image.jpg */,
 				E5494B7E18ADED7A00402250 /* yoda.png */,
 			);
@@ -376,6 +379,7 @@
 				E5494B5818A97F6C00402250 /* Images.xcassets in Resources */,
 				E5D24BCE18D0DF3800514A49 /* Main.storyboard in Resources */,
 				E5494B4A18A97F6C00402250 /* InfoPlist.strings in Resources */,
+				E550A56C192D2C8F00EE8BB0 /* Camcoder.png in Resources */,
 				D4FFAC831926655C00FD496F /* base_image.jpg in Resources */,
 				E5E0F40118CF624A006320AA /* iPhoto.png in Resources */,
 			);
