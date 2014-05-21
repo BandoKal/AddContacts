@@ -44,4 +44,8 @@ typedef void(^APICompletionBlock)(NSError *error);
 
 //TODO: Add ability to cancel image operation that's in progress
 
+
+//Video Feature Set
+-(void)addVideoWithFileSize:(NSUInteger) fileSize withCompletionBlock:(APICompletionBlock)completionBlock;
+-(void)addVideoWithDuration:(NSUInteger) duration withCompletionBlock:(APICompletionBlock)completionBlock;
 @end

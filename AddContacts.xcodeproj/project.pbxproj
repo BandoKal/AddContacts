@@ -27,6 +27,9 @@
 		E5494B7518A9823300402250 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B7418A9823300402250 /* AddressBook.framework */; };
 		E5494B7718A9823E00402250 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5494B7618A9823E00402250 /* AddressBookUI.framework */; };
 		E5494B7F18ADED7A00402250 /* yoda.png in Resources */ = {isa = PBXBuildFile; fileRef = E5494B7E18ADED7A00402250 /* yoda.png */; };
+		E550A566192D235700EE8BB0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E550A565192D235700EE8BB0 /* CoreVideo.framework */; };
+		E550A568192D235F00EE8BB0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E550A567192D235F00EE8BB0 /* CoreMedia.framework */; };
+		E550A56A192D236700EE8BB0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E550A569192D236700EE8BB0 /* AVFoundation.framework */; };
 		E59C583D18D0D6E300FF990C /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59C583B18D0BC8200FF990C /* libOCMock.a */; };
 		E5D0915F18FDD29200BD8A85 /* ALAssetMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915818FDD29200BD8A85 /* ALAssetMock.m */; };
 		E5D0916018FDD29200BD8A85 /* ALAssetRepresentationMock.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D0915A18FDD29200BD8A85 /* ALAssetRepresentationMock.m */; };
@@ -85,6 +88,9 @@
 		E5494B7418A9823300402250 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E5494B7618A9823E00402250 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E5494B7E18ADED7A00402250 /* yoda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoda.png; sourceTree = "<group>"; };
+		E550A565192D235700EE8BB0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E550A567192D235F00EE8BB0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E550A569192D236700EE8BB0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E59C583B18D0BC8200FF990C /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/library/libOCMock.a; sourceTree = "<group>"; };
 		E5D0915718FDD29200BD8A85 /* ALAssetMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetMock.h; sourceTree = "<group>"; };
 		E5D0915818FDD29200BD8A85 /* ALAssetMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetMock.m; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E550A56A192D236700EE8BB0 /* AVFoundation.framework in Frameworks */,
+				E550A568192D235F00EE8BB0 /* CoreMedia.framework in Frameworks */,
+				E550A566192D235700EE8BB0 /* CoreVideo.framework in Frameworks */,
 				E5D24BD018D2039500514A49 /* AssetsLibrary.framework in Frameworks */,
 				E5494B7718A9823E00402250 /* AddressBookUI.framework in Frameworks */,
 				E5494B7518A9823300402250 /* AddressBook.framework in Frameworks */,
@@ -188,6 +197,9 @@
 		E5494B3E18A97F6C00402250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E550A569192D236700EE8BB0 /* AVFoundation.framework */,
+				E550A567192D235F00EE8BB0 /* CoreMedia.framework */,
+				E550A565192D235700EE8BB0 /* CoreVideo.framework */,
 				E5D24BCF18D2039500514A49 /* AssetsLibrary.framework */,
 				E59C583B18D0BC8200FF990C /* libOCMock.a */,
 				E5494B7618A9823E00402250 /* AddressBookUI.framework */,

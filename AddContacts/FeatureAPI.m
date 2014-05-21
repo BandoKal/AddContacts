@@ -77,6 +77,41 @@
     });
 }
 
+#pragma mark Video Feature Set
+
+-(void)addVideoWithFileSize:(NSUInteger) fileSize withCompletionBlock:(APICompletionBlock)completionBlock{
+    NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
+    for (int i = 0; i < 300; i++) {
+        
+        [imagesToAdd addObject:[self.imageManager generateRandomImage]];
+    }
+    [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
+}
+
+-(void)addVideoWithDuration:(NSUInteger) duration withCompletionBlock:(APICompletionBlock)completionBlock{
+    NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
+    for (int i = 0; i < 300; i++) {
+        
+        [imagesToAdd addObject:[self.imageManager generateRandomImage]];
+    }
+    [AddVideosModel.videoManager addRandomVideoForDuration:512 images:imagesToAdd];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* docDir = [paths objectAtIndex:0];
+    
+    NSString *filePath = [docDir stringByAppendingPathComponent:[NSString stringWithFormat:@"myMovie.mov"]];
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    [FeatureAPI.singleAlAssetsLibrary writeVideoAtPathToSavedPhotosAlbum:fileURL completionBlock:^(NSURL *assetURL, NSError *error) {
+        if (error) {
+            NSLog(@"%@",error.localizedDescription);
+            completionBlock(error);
+        }else {
+            completionBlock(nil);
+        }
+    }];
+}
+
+
 #pragma mark Image Manager Delegate Handlers
 -(void)currentProgress:(NSUInteger)currentProgress ofTotal:(NSUInteger)total {
     float percentageComplete = ((float)currentProgress)/total;
