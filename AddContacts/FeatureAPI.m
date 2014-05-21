@@ -88,13 +88,13 @@
     [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
 }
 
--(void)addVideoWithDuration:(NSUInteger) duration withCompletionBlock:(APICompletionBlock)completionBlock{
+-(void)addVideoWithDuration:(int) duration withCompletionBlock:(APICompletionBlock)completionBlock{
     NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 300; i++) {
+    for (int i = 0; i < 10; i++) {
         
         [imagesToAdd addObject:[self.imageManager generateRandomImage]];
     }
-    [AddVideosModel.videoManager addRandomVideoForDuration:512 images:imagesToAdd];
+    [AddVideosModel.videoManager addRandomVideoForDuration:duration images:imagesToAdd];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* docDir = [paths objectAtIndex:0];

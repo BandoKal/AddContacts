@@ -7,6 +7,7 @@
 //
 
 #import "AddVideosViewController.h"
+#import "FeatureAPI.h"
 
 @interface AddVideosViewController ()
 
@@ -27,6 +28,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [FeatureAPI.singleFeatureAPI addVideoWithDuration:1000 withCompletionBlock:^(NSError *error) {
+        if (error) {
+            NSLog(@"error");
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

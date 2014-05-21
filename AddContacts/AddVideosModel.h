@@ -15,6 +15,6 @@
 +(AddVideosModel*)videoManager;
 
 -(void)addRandomVideoForFileSize:(NSUInteger)fileSize images:(NSArray*)imagesArray;
--(void)addRandomVideoForDuration:(NSUInteger)duration images:(NSArray*)imagesArray;
+-(void)addRandomVideoForDuration:(int)duration images:(NSArray*)imagesArray;
 
 @end

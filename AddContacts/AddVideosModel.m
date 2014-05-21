@@ -111,14 +111,14 @@
     }
 }
 
--(void)addRandomVideoForDuration:(NSUInteger)duration images:(NSArray*)imagesArray {
+-(void)addRandomVideoForDuration:(int)duration images:(NSArray*)imagesArray {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* docDir = [paths objectAtIndex:0];
     
     NSString *filePath = [docDir stringByAppendingPathComponent:[NSString stringWithFormat:@"myMovie.mov"]];
     for (UIImage *image in imagesArray) {
         //I need a path to send this video to!!!!
-        [self writeImageAsMovie:image toPath:filePath size:CGSizeMake(320.0f,480.0f) duration:(float)duration];
+        [self writeImageAsMovie:image toPath:filePath size:CGSizeMake(320.0f,480.0f) duration:duration];
     }
 }
 
