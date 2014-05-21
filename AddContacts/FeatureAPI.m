@@ -79,7 +79,7 @@
 
 #pragma mark Video Feature Set
 
--(void)addVideoWithFileSize:(NSUInteger) fileSize withCompletionBlock:(APICompletionBlock)completionBlock{
+-(void)addVideoWithFileSize:(NSUInteger)fileSize withCompletionBlock:(APICompletionBlock)completionBlock{
     NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
     for (int i = 0; i < 300; i++) {
         
@@ -88,7 +88,7 @@
     [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
 }
 
--(void)addVideoWithDuration:(int) duration withCompletionBlock:(APICompletionBlock)completionBlock{
+-(void)addVideoWithDuration:(int) duration withCompletionBlock:(APICompletionBlock)completionBlock {
     NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
     for (int i = 0; i < 10; i++) {
         

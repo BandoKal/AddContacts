@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeatureAPI.h"
 
-@interface AddVideosViewController : UIViewController
+@interface AddVideosViewController : UIViewController <UITextFieldDelegate, FeatureAPIDelegate>
 
 @end

@@ -28,7 +28,7 @@ static NSString *const baseImageForRandomImages = @"base_image.jpg";
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) FeatureAPI *featureAPI;
 
-@property (nonatomic, getter = isAddingImages) BOOL addingImages;
+@property (nonatomic, getter=isAddingImages) BOOL addingImages;
 
 // Properties for hiding keyboard by touching off keyboard
 @property (strong, nonatomic) UIGestureRecognizer *tap;

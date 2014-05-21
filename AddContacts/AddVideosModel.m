@@ -21,8 +21,7 @@
     return sharedInstance;
 }
 
-- (void)writeImageAsMovie:(UIImage*)image toPath:(NSString*)path size:(CGSize)size duration:(int)duration
-{
+-(void)writeImageAsMovie:(UIImage*)image toPath:(NSString*)path size:(CGSize)size duration:(int)duration {
     NSError *error = nil;
     AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:
                                   [NSURL fileURLWithPath:path] fileType:AVFileTypeQuickTimeMovie
@@ -62,8 +61,7 @@
     }];
 }
 
-- (CVPixelBufferRef) pixelBufferFromCGImage:(CGImageRef)image size:(CGSize)size
-{
+-(CVPixelBufferRef)pixelBufferFromCGImage:(CGImageRef)image size:(CGSize)size {
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithBool:YES], kCVPixelBufferCGImageCompatibilityKey,
                              [NSNumber numberWithBool:YES], kCVPixelBufferCGBitmapContextCompatibilityKey,
@@ -100,7 +98,7 @@
     return NULL;
 }
 
--(void)addRandomVideoForFileSize:(NSUInteger)fileSize images:(NSArray*)imagesArray{
+-(void)addRandomVideoForFileSize:(NSUInteger)fileSize images:(NSArray*)imagesArray {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* docDir = [paths objectAtIndex:0];
     
@@ -121,6 +119,5 @@
         [self writeImageAsMovie:image toPath:filePath size:CGSizeMake(320.0f,480.0f) duration:duration];
     }
 }
-
 
 @end
