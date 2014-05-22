@@ -90,12 +90,13 @@
     });
 }
 
--(void)addVideoWithDuration:(int) duration withCompletionBlock:(APICompletionBlock)completionBlock {
+-(void)addVideoWithDuration:(int)duration withCompletionBlock:(APICompletionBlock)completionBlock {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
         for (int i = 0; i < 10; i++) {
             [imagesToAdd addObject:[self.imageManager generateRandomImage]];
         }
+        
         [AddVideosModel.videoManager addRandomVideoForDuration:duration images:imagesToAdd];
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -108,6 +109,7 @@
                 NSLog(@"%@",error.localizedDescription);
                 completionBlock(error);
             } else {
+                [self currentProgress:1 ofTotal:1];
                 completionBlock(nil);
             }
         }];
