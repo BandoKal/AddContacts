@@ -10,11 +10,16 @@
 #import <CoreMedia/CoreMedia.h>
 #import <CoreVideo/CoreVideo.h>
 
+@class ImageManager;
+
 @interface AddVideosModel : NSObject
 
 +(AddVideosModel*)videoManager;
 
--(void)addRandomVideoForFileSize:(NSUInteger)fileSize images:(NSArray*)imagesArray;
+//-(void)addRandomVideoForFileSize:(NSUInteger)fileSize images:(NSArray*)imagesArray;
 -(void)addRandomVideoForDuration:(int)duration images:(NSArray*)imagesArray;
+-(void)addRandomVideoForDuration:(int)duration imageManager:(ImageManager *)imageManager;
+
+-(void)cleanupTempVideos;
 
 @end

@@ -46,6 +46,6 @@ typedef void(^APICompletionBlock)(NSError *error);
 
 
 //Video Feature Set
--(void)addVideoWithFileSize:(NSUInteger) fileSize withCompletionBlock:(APICompletionBlock)completionBlock;
+//-(void)addVideoWithFileSize:(NSUInteger) fileSize withCompletionBlock:(APICompletionBlock)completionBlock;
 -(void)addVideoWithDuration:(int)duration withCompletionBlock:(APICompletionBlock)completionBlock;
 @end

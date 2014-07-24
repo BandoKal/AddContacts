@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) ImageManager *imageManager;
 @property (copy) APICompletionBlock imageOperationCompletionBlock;
+@property (copy) APICompletionBlock videoOperationCompletionBlock;
 
 @end
 
@@ -79,25 +80,23 @@
 
 #pragma mark Video Feature Set
 
--(void)addVideoWithFileSize:(NSUInteger)fileSize withCompletionBlock:(APICompletionBlock)completionBlock{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
-        for (int i = 0; i < 300; i++) {
-            
-            [imagesToAdd addObject:[self.imageManager generateRandomImage]];
-        }
-        [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
-    });
-}
+//-(void)addVideoWithFileSize:(NSUInteger)fileSize withCompletionBlock:(APICompletionBlock)completionBlock{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
+//        for (int i = 0; i < 300; i++) {
+//            
+//            [imagesToAdd addObject:[self.imageManager generateRandomImage]];
+//        }
+//        [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
+//    });
+//}
 
 -(void)addVideoWithDuration:(int)duration withCompletionBlock:(APICompletionBlock)completionBlock {
+    self.videoOperationCompletionBlock = completionBlock;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableArray *imagesToAdd = [[NSMutableArray alloc]init];
-        for (int i = 0; i < 10; i++) {
-            [imagesToAdd addObject:[self.imageManager generateRandomImage]];
-        }
+        [AddVideosModel.videoManager cleanupTempVideos];
         
-        [AddVideosModel.videoManager addRandomVideoForDuration:duration images:imagesToAdd];
+        [AddVideosModel.videoManager addRandomVideoForDuration:duration imageManager:self.imageManager];
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *docDir = [paths objectAtIndex:0];
@@ -107,11 +106,12 @@
         [FeatureAPI.singleAlAssetsLibrary writeVideoAtPathToSavedPhotosAlbum:fileURL completionBlock:^(NSURL *assetURL, NSError *error) {
             if (error) {
                 NSLog(@"%@",error.localizedDescription);
-                completionBlock(error);
+                self.videoOperationCompletionBlock(error);
             } else {
                 [self currentProgress:1 ofTotal:1];
-                completionBlock(nil);
+                self.videoOperationCompletionBlock(nil);
             }
+            [AddVideosModel.videoManager cleanupTempVideos];
         }];
     });
 }

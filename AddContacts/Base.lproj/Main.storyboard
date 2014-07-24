@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7aU-n6-3ao">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -268,6 +268,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2c-info.png" translatesAutoresizingMaskIntoConstraints="NO" id="MQy-7a-z9D">
+                                <rect key="frame" x="20" y="45" width="280" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="5Bx-vL-EQY"/>
+                                    <constraint firstAttribute="height" constant="245" id="c1X-HS-HEa"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration (in seconds)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zi6-Bo-H3x">
                                 <rect key="frame" x="81" y="310" width="158" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -313,8 +321,11 @@
                             <constraint firstItem="Obp-Ha-hpv" firstAttribute="top" secondItem="dTb-cj-gpG" secondAttribute="bottom" constant="8" id="5ba-q3-ANF"/>
                             <constraint firstAttribute="centerX" secondItem="WG3-BB-i5U" secondAttribute="centerX" id="9M2-cq-1nX"/>
                             <constraint firstItem="WG3-BB-i5U" firstAttribute="top" secondItem="Obp-Ha-hpv" secondAttribute="bottom" constant="8" id="9av-Ta-3gK"/>
+                            <constraint firstItem="Zi6-Bo-H3x" firstAttribute="top" secondItem="MQy-7a-z9D" secondAttribute="bottom" constant="20" id="Dgs-MJ-KtH"/>
+                            <constraint firstAttribute="trailing" secondItem="MQy-7a-z9D" secondAttribute="trailing" constant="20" id="E8e-fO-UjP"/>
                             <constraint firstItem="dTb-cj-gpG" firstAttribute="top" secondItem="Zi6-Bo-H3x" secondAttribute="bottom" constant="8" id="UcM-l2-OI4"/>
-                            <constraint firstItem="Zi6-Bo-H3x" firstAttribute="top" secondItem="gkQ-lb-rJ2" secondAttribute="bottom" constant="290" id="Zat-pX-JXW"/>
+                            <constraint firstItem="MQy-7a-z9D" firstAttribute="leading" secondItem="ikn-ur-38Z" secondAttribute="leading" constant="20" id="WVS-zw-VTq"/>
+                            <constraint firstItem="MQy-7a-z9D" firstAttribute="top" secondItem="gkQ-lb-rJ2" secondAttribute="bottom" constant="25" id="n52-Vv-3Sx"/>
                             <constraint firstAttribute="centerX" secondItem="Obp-Ha-hpv" secondAttribute="centerX" id="nJG-us-JSM"/>
                             <constraint firstAttribute="centerX" secondItem="dTb-cj-gpG" secondAttribute="centerX" id="tLb-uc-7ip"/>
                             <constraint firstAttribute="centerX" secondItem="Zi6-Bo-H3x" secondAttribute="centerX" id="zUW-x8-cim"/>
@@ -345,7 +356,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-3H-7qi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-3H-7qi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="331"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -412,7 +423,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-Kq-fsE">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-Kq-fsE">
                                 <rect key="frame" x="119" y="339" width="82" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>

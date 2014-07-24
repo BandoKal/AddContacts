@@ -9,6 +9,8 @@
 #import "AddVideosViewController.h"
 #import "FeatureAPI.h"
 
+#import "SimpleVideoMaker.h"
+
 @interface AddVideosViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *durationTextField;
@@ -105,8 +107,10 @@
         return;
     }
     
+    NSLog(@"Starting video generation");    
+    
     [self markVideoOperationAsStarting];
-    [FeatureAPI.singleFeatureAPI addVideoWithDuration:1000 withCompletionBlock:^(NSError *error) {
+    [FeatureAPI.singleFeatureAPI addVideoWithDuration:self.durationTextField.text.intValue withCompletionBlock:^(NSError *error) {
         NSLog(@"Adding videos complete!");
         dispatch_async(dispatch_get_main_queue(), ^{
             self.doneLabel.hidden = NO;
