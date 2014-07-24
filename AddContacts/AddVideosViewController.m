@@ -9,8 +9,6 @@
 #import "AddVideosViewController.h"
 #import "FeatureAPI.h"
 
-#import "SimpleVideoMaker.h"
-
 @interface AddVideosViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *durationTextField;
