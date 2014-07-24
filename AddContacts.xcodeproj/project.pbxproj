@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D480466119251FCC00557A4F /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D480466019251FCC00557A4F /* ImageManager.m */; };
-		D4BDFFC3197ED76C002E183C /* SimpleVideoMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BDFFC2197ED76C002E183C /* SimpleVideoMaker.m */; };
 		D4FFAC831926655C00FD496F /* base_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4FFAC821926655C00FD496F /* base_image.jpg */; };
 		E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E83191AB300005E8476 /* FeatureAPI.m */; };
 		E5223E8A191AB345005E8476 /* AddVideosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E89191AB345005E8476 /* AddVideosModel.m */; };
@@ -62,8 +61,6 @@
 /* Begin PBXFileReference section */
 		D480465F19251FCC00557A4F /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
 		D480466019251FCC00557A4F /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
-		D4BDFFC1197ED76C002E183C /* SimpleVideoMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVideoMaker.h; sourceTree = "<group>"; };
-		D4BDFFC2197ED76C002E183C /* SimpleVideoMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVideoMaker.m; sourceTree = "<group>"; };
 		D4FFAC821926655C00FD496F /* base_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = base_image.jpg; sourceTree = "<group>"; };
 		E5223E82191AB300005E8476 /* FeatureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureAPI.h; sourceTree = "<group>"; };
 		E5223E83191AB300005E8476 /* FeatureAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureAPI.m; sourceTree = "<group>"; };
@@ -176,8 +173,6 @@
 				E5223E89191AB345005E8476 /* AddVideosModel.m */,
 				E5223E8B191AB355005E8476 /* AddContactsModel.h */,
 				E5223E8C191AB355005E8476 /* AddContactsModel.m */,
-				D4BDFFC1197ED76C002E183C /* SimpleVideoMaker.h */,
-				D4BDFFC2197ED76C002E183C /* SimpleVideoMaker.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -411,7 +406,6 @@
 				E5223E8A191AB345005E8476 /* AddVideosModel.m in Sources */,
 				E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */,
 				E5494B5018A97F6C00402250 /* AppDelegate.m in Sources */,
-				D4BDFFC3197ED76C002E183C /* SimpleVideoMaker.m in Sources */,
 				E5494B4C18A97F6C00402250 /* main.m in Sources */,
 				E5E0F41618CF812C006320AA /* AddImagesViewController.m in Sources */,
 				E5D0916918FF04A800BD8A85 /* AddVideosViewController.m in Sources */,
