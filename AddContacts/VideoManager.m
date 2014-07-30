@@ -9,6 +9,7 @@
 #import "VideoManager.h"
 
 #import "ImageManager.h"
+#import "UIDevice-Hardware.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -52,6 +53,14 @@ NSString *const BCGvideoManipulationErrorDomain = @"videoManipulationErrorDomain
     int32_t framesPerSecond = 60;
     int numberOfDifferentImages = 1;
     int portionDuration = 10;
+    
+    // Memory pressure causes a crash with even 10sec portion duration on these devices
+    BOOL deviceIsIphone4 = [UIDevice.currentDevice.platformString isEqualToString:IPHONE_4_NAMESTRING];
+    BOOL deviceIsIphone4s = [UIDevice.currentDevice.platformString isEqualToString:IPHONE_4S_NAMESTRING];
+    
+    if (deviceIsIphone4 || deviceIsIphone4s) {
+        portionDuration = 5;
+    }
     
     // Force duration to be an even multiple of portionDuration to avoid having one portion of a different duration than the others
     if ((duration % portionDuration) > 0) {

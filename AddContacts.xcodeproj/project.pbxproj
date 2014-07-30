@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D480466119251FCC00557A4F /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D480466019251FCC00557A4F /* ImageManager.m */; };
+		D4AA52B2198988BD0088ABEA /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AA52B1198988BD0088ABEA /* UIDevice-Hardware.m */; };
 		D4FFAC831926655C00FD496F /* base_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4FFAC821926655C00FD496F /* base_image.jpg */; };
 		E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E83191AB300005E8476 /* FeatureAPI.m */; };
 		E5223E8A191AB345005E8476 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5223E89191AB345005E8476 /* VideoManager.m */; };
@@ -61,6 +62,8 @@
 /* Begin PBXFileReference section */
 		D480465F19251FCC00557A4F /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
 		D480466019251FCC00557A4F /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
+		D4AA52B0198988BD0088ABEA /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		D4AA52B1198988BD0088ABEA /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		D4FFAC821926655C00FD496F /* base_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = base_image.jpg; sourceTree = "<group>"; };
 		E5223E82191AB300005E8476 /* FeatureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureAPI.h; sourceTree = "<group>"; };
 		E5223E83191AB300005E8476 /* FeatureAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureAPI.m; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 		D4EB9664198961DD009497BF /* VideoHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				D4AA52B0198988BD0088ABEA /* UIDevice-Hardware.h */,
+				D4AA52B1198988BD0088ABEA /* UIDevice-Hardware.m */,
 				E5223E88191AB345005E8476 /* VideoManager.h */,
 				E5223E89191AB345005E8476 /* VideoManager.m */,
 			);
@@ -413,6 +418,7 @@
 				E5494B5618A97F6C00402250 /* AddContactsViewController.m in Sources */,
 				E5223E8A191AB345005E8476 /* VideoManager.m in Sources */,
 				E5223E84191AB300005E8476 /* FeatureAPI.m in Sources */,
+				D4AA52B2198988BD0088ABEA /* UIDevice-Hardware.m in Sources */,
 				E5494B5018A97F6C00402250 /* AppDelegate.m in Sources */,
 				E5494B4C18A97F6C00402250 /* main.m in Sources */,
 				E5E0F41618CF812C006320AA /* AddImagesViewController.m in Sources */,
