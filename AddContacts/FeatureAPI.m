@@ -9,12 +9,13 @@
 #import "FeatureAPI.h"
 
 #import "AddContactsModel.h"
-#import "AddVideosModel.h"
+#import "VideoManager.h"
 #import "ALAssetsLibrary+LibraryHelper.h"
 
 @interface FeatureAPI ()
 
 @property (nonatomic, strong) ImageManager *imageManager;
+@property (nonatomic, strong) VideoManager *videoManager;
 @property (copy) APICompletionBlock imageOperationCompletionBlock;
 @property (copy) APICompletionBlock videoOperationCompletionBlock;
 
@@ -46,6 +47,7 @@
     self = [super init];
     if (self) {
         _imageManager = [[ImageManager alloc] initWithAssetsLibrary:[FeatureAPI singleAlAssetsLibrary] delegate:self];
+        _videoManager = [[VideoManager alloc] initWithAssetsLibrary:[FeatureAPI singleAlAssetsLibrary] delegate:self];
     }
     return self;
 }
@@ -87,32 +89,15 @@
 //            
 //            [imagesToAdd addObject:[self.imageManager generateRandomImage]];
 //        }
-//        [AddVideosModel.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
+//        [VideoManager.videoManager addRandomVideoForFileSize:512 images:imagesToAdd];
 //    });
 //}
 
 -(void)addVideoWithDuration:(int)duration withCompletionBlock:(APICompletionBlock)completionBlock {
     self.videoOperationCompletionBlock = completionBlock;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [AddVideosModel.videoManager cleanupTempVideos];
-        
-        [AddVideosModel.videoManager addRandomVideoForDuration:duration imageManager:self.imageManager];
-        
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *docDir = [paths objectAtIndex:0];
-        
-        NSString *filePath = [docDir stringByAppendingPathComponent:[NSString stringWithFormat:@"myMovie.mov"]];
-        NSURL *fileURL = [NSURL fileURLWithPath:filePath];
-        [FeatureAPI.singleAlAssetsLibrary writeVideoAtPathToSavedPhotosAlbum:fileURL completionBlock:^(NSURL *assetURL, NSError *error) {
-            if (error) {
-                NSLog(@"%@",error.localizedDescription);
-                self.videoOperationCompletionBlock(error);
-            } else {
-                [self currentProgress:1 ofTotal:1];
-                self.videoOperationCompletionBlock(nil);
-            }
-            [AddVideosModel.videoManager cleanupTempVideos];
-        }];
+        [self.videoManager cleanupTempVideos];
+        [self.videoManager addRandomVideoForDuration:duration imageManager:self.imageManager];
     });
 }
 
@@ -137,6 +122,23 @@
 -(void)imageOperationFailedPartiallyWithError:(NSError *)error onObject:(id)failedObject {
     NSLog(@"Image operation failed with error: %@", error);
     [self.delegate statusUpdateFromModelWithInfoObject:failedObject error:error];
+}
+
+#pragma mark Video Manager Delegate Handlers
+-(void)currentVideoProgress:(NSUInteger)currentProgress ofTotal:(NSUInteger)total {
+    float percentageComplete = ((float)currentProgress)/total;
+    NSLog(@"Video operation progress update: %f", percentageComplete);
+    [self.delegate statusUpdateFromModelWithInfoObject:[NSNumber numberWithFloat:percentageComplete] error:nil];
+}
+
+-(void)videoOperationCompletedSuccessfully {
+    NSLog(@"Video operation completed successfully");
+    self.videoOperationCompletionBlock(nil);
+}
+
+-(void)videoOperationFailedCompletelyWithError:(NSError *)error {
+    NSLog(@"Video operation failed completely with error: %@", error);
+    self.videoOperationCompletionBlock(error);
 }
 
 @end

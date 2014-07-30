@@ -14,7 +14,7 @@
 NSString *const BCGimageManipulationErrorDomain;
 
 typedef NS_ENUM(NSInteger, BCGImageManipulationErrorCode) {
-    BCGimageManipulationErrorCode_InvalidImageAdded,
+    BCGImageManipulationErrorCode_InvalidImageAdded,
     BCGImageManipulationErrorCode_TimeoutDuringImageImport,
 };
 

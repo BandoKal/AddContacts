@@ -63,7 +63,7 @@
     
     self.durationTextField.enabled = NO;
     self.addVideosButton.enabled = NO;
-    [self.addVideosButton setTitle:@"Adding Videos..." forState:UIControlStateNormal];
+    [self.addVideosButton setTitle:@"Adding Video..." forState:UIControlStateNormal];
     
     self.doneLabel.hidden = YES;
     self.progressBarView.progressTintColor = [UIColor greenColor];

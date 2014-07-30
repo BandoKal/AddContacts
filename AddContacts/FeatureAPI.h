@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VideoManager.h"
 #import "ImageManager.h"
 
 typedef void(^APICompletionBlock)(NSError *error);
@@ -20,7 +21,7 @@ typedef void(^APICompletionBlock)(NSError *error);
 
 @end
 
-@interface FeatureAPI : NSObject <ImageManagerDelegate>
+@interface FeatureAPI : NSObject <ImageManagerDelegate, VideoManagerDelegate>
 
 //TODO: Change to array so multiple delegates could be simultaneously set up
 @property (nonatomic, strong) id<FeatureAPIDelegate> delegate;

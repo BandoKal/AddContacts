@@ -45,7 +45,7 @@ NSUInteger const BCGsecondsToWaitImportingOneImage = 10;
     if (imagesToAdd == nil) {
         NSLog(@"Aborting adding images because nil array of images received");
         [self notifyDelegatesOfCompleteFailureWithError:[self createErrorWithDomain:BCGimageManipulationErrorDomain
-                                                                               code:BCGimageManipulationErrorCode_InvalidImageAdded
+                                                                               code:BCGImageManipulationErrorCode_InvalidImageAdded
                                                                             message:@"nil array of images received"]];
         return;
     }
@@ -147,7 +147,7 @@ NSUInteger const BCGsecondsToWaitImportingOneImage = 10;
     } else {
         NSLog(@"Aborting adding images because a non-UIImage was received: %@", image);
         errorToReturn = [self createErrorWithDomain:BCGimageManipulationErrorDomain
-                                               code:BCGimageManipulationErrorCode_InvalidImageAdded
+                                               code:BCGImageManipulationErrorCode_InvalidImageAdded
                                             message:@"received object was not a UIImage"];
         
         dispatch_semaphore_signal(importingAnImage);
