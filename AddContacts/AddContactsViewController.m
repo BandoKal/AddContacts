@@ -33,6 +33,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *withImagesSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *randomizedSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property BOOL accessGranted;
 
@@ -201,16 +202,34 @@ typedef enum {
             
             CFErrorRef contentError = NULL;
             
-            // create person info strings
-            NSString *fName = @"TestContact";
-            NSString *lName = [NSString stringWithFormat:@"%d_last",i];
-            NSString *phoneNumber = [NSString stringWithFormat:@"%lld", arc4random() %99999999999 + 10000000000]; // 999.999.9999
+            NSString *fName;
+            NSString *lName;
+            NSString *city;
+            NSString *state;
+            NSString *zipCode;
+            NSString *email;
+            
+            if (self.randomizedSwitch.on == NO) {
+                // create person info strings
+                fName = @"TestContact";
+                lName = [NSString stringWithFormat:@"%d_last",i];
+                city = [NSString stringWithFormat:@"Nashville"];
+                state = @"TN";
+                zipCode = @"37216";
+                email = @"contact@domain.com";
+            } else {
+                fName = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                lName = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                city = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                state = [self randomLettersWithLength:2];
+                zipCode = [self randomNumbersWithLength:5];
+                email = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                email = [email stringByAppendingString:[NSString stringWithFormat:@"@%@.com", [self randomLettersWithLength:5 + arc4random_uniform(13)]]];
+            }
+            
+            NSString *phoneNumber = [NSString stringWithFormat:@"%ld", (long)(arc4random() %99999999999 + 10000000000)]; // 999.999.9999
             NSString *streetAddress = [NSString stringWithFormat:@"%d street", arc4random()%9999 + 1000];
-            NSString *city = [NSString stringWithFormat:@"Nashville"];
-            NSString *state = @"TN";
-            NSString *zipCode = @"37216";
             NSString *country = @"USA";
-            NSString *email = @"contact@domain.com";
             UIImage *contactImage = [UIImage imageNamed:@"yoda.png"];
             
             // create person and assign property for contact
@@ -338,6 +357,32 @@ typedef enum {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
      self.progressLabel.text = [NSString stringWithFormat:@"%i/%i", currentlyOn + 1, total];
     });
+}
+
+NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+-(NSString *) randomLettersWithLength: (int) len {
+    
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i = 0; i < len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((uint)[letters length])]];
+    }
+    
+    return randomString;
+}
+
+NSString *numbers = @"0123456789";
+
+-(NSString *) randomNumbersWithLength: (int) len {
+    
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i = 0; i < len; i++) {
+        [randomString appendFormat: @"%C", [numbers characterAtIndex: arc4random_uniform((uint)[numbers length])]];
+    }
+    
+    return randomString;
 }
 
 #pragma mark - UIAlertView Delegate Methods
