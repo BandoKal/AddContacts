@@ -187,6 +187,8 @@ typedef enum {
         [self.activityIndicator stopAnimating];
         [self reportStatus:workStatus];
     });
+    
+    CFRelease(book);
 }
 
 -(void)createContacts {
@@ -195,87 +197,91 @@ typedef enum {
     ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, &bookError);
     
     if (bookError == NULL) {
+        
         int numContacts = [self.createQuantityTextField.text intValue];
         for (int i = 0; i< numContacts; i++) {
-            
-            [self updateProgressLabelText:i total:numContacts];
-            
-            CFErrorRef contentError = NULL;
-            
-            NSString *fName;
-            NSString *lName;
-            NSString *city;
-            NSString *state;
-            NSString *zipCode;
-            NSString *email;
-            
-            if (self.randomizedSwitch.on == NO) {
-                // create person info strings
-                fName = @"TestContact";
-                lName = [NSString stringWithFormat:@"%d_last",i];
-                city = [NSString stringWithFormat:@"Nashville"];
-                state = @"TN";
-                zipCode = @"37216";
-                email = @"contact@domain.com";
-            } else {
-                fName = [self randomLettersWithLength:5 + arc4random_uniform(13)];
-                lName = [self randomLettersWithLength:5 + arc4random_uniform(13)];
-                city = [self randomLettersWithLength:5 + arc4random_uniform(13)];
-                state = [self randomLettersWithLength:2];
-                zipCode = [self randomNumbersWithLength:5];
-                email = [self randomLettersWithLength:5 + arc4random_uniform(13)];
-                email = [email stringByAppendingString:[NSString stringWithFormat:@"@%@.com", [self randomLettersWithLength:5 + arc4random_uniform(13)]]];
-            }
-            
-            NSString *phoneNumber = [NSString stringWithFormat:@"%ld", (long)(arc4random() %99999999999 + 10000000000)]; // 999.999.9999
-            NSString *streetAddress = [NSString stringWithFormat:@"%d street", arc4random()%9999 + 1000];
-            NSString *country = @"USA";
-            UIImage *contactImage = [UIImage imageNamed:@"yoda.png"];
-            
-            // create person and assign property for contact
-            ABRecordRef person = ABPersonCreate();
-            ABRecordSetValue(person, kABPersonFirstNameProperty, (__bridge CFStringRef)fName, NULL);
-            ABRecordSetValue(person, kABPersonLastNameProperty, (__bridge CFStringRef)lName, NULL);
-            
-            ABMutableMultiValueRef multiPhone = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-            ABMultiValueAddValueAndLabel(multiPhone, (__bridge CFTypeRef)(phoneNumber), kABPersonPhoneIPhoneLabel, NULL);
-            ABRecordSetValue(person, kABPersonPhoneProperty, multiPhone,NULL);
-            CFRelease(multiPhone);
-            
-            ABMutableMultiValueRef multiAddress = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
-            NSMutableDictionary *addressDictionary = [[NSMutableDictionary alloc] init];
-            [addressDictionary setObject:streetAddress forKey:(NSString *) kABPersonAddressStreetKey];
-            [addressDictionary setObject:city forKey:(NSString *) kABPersonAddressCityKey];
-            [addressDictionary setObject:state forKey:(NSString *) kABPersonAddressStateKey];
-            [addressDictionary setObject:zipCode forKey:(NSString *) kABPersonAddressZIPKey];
-            [addressDictionary setObject:country forKey:(NSString *) kABPersonAddressCountryKey];
-            ABMultiValueAddValueAndLabel(multiAddress, (__bridge CFTypeRef)(addressDictionary), kABHomeLabel, NULL);
-            ABRecordSetValue(person, kABPersonAddressProperty, multiAddress,&contentError);
-            CFRelease(multiAddress);
-            
-            
-            ABMutableMultiValueRef multiEmail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-            ABMultiValueAddValueAndLabel(multiEmail, (__bridge CFTypeRef)(email), kABHomeLabel, NULL);
-            ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
-            CFRelease(multiEmail);
-            
-            if (self.withImagesSwitch.on) {
-                NSData *data = UIImagePNGRepresentation(contactImage);
-                ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
-            }
-            
-            CFErrorRef addError = NULL;
-            ABAddressBookAddRecord(book, person, &addError);
-            ABAddressBookSave(book, &addError);
-            
-            if (contentError != NULL) {
-                NSLog(@"Unable to add content for contact %d with error: %@",i, contentError);
-                workStatus = SomeSuccessAdd;
-            }
-            
-            if (addError != NULL) {
-                NSLog(@"Unable to add contact %d to ABbook with error: %@",i, addError);
-                workStatus = SomeSuccessAdd;
+            @autoreleasepool {
+                [self updateProgressLabelText:i total:numContacts];
+                
+                CFErrorRef contentError = NULL;
+                
+                NSString *fName;
+                NSString *lName;
+                NSString *city;
+                NSString *state;
+                NSString *zipCode;
+                NSString *email;
+                
+                if (self.randomizedSwitch.on == NO) {
+                    // create person info strings
+                    fName = @"TestContact";
+                    lName = [NSString stringWithFormat:@"%d_last",i];
+                    city = [NSString stringWithFormat:@"Nashville"];
+                    state = @"TN";
+                    zipCode = @"37216";
+                    email = @"contact@domain.com";
+                } else {
+                    fName = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                    lName = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                    city = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                    state = [self randomLettersWithLength:2];
+                    zipCode = [self randomNumbersWithLength:5];
+                    email = [self randomLettersWithLength:5 + arc4random_uniform(13)];
+                    email = [email stringByAppendingString:[NSString stringWithFormat:@"@%@.com", [self randomLettersWithLength:5 + arc4random_uniform(13)]]];
+                }
+                
+                NSString *phoneNumber = [NSString stringWithFormat:@"%ld", (long)(arc4random() %99999999999 + 10000000000)]; // 999.999.9999
+                NSString *streetAddress = [NSString stringWithFormat:@"%d street", arc4random()%9999 + 1000];
+                NSString *country = @"USA";
+                UIImage *contactImage = [UIImage imageNamed:@"yoda.png"];
+                
+                // create person and assign property for contact
+                ABRecordRef person = ABPersonCreate();
+                ABRecordSetValue(person, kABPersonFirstNameProperty, (__bridge CFStringRef)fName, NULL);
+                ABRecordSetValue(person, kABPersonLastNameProperty, (__bridge CFStringRef)lName, NULL);
+                
+                ABMutableMultiValueRef multiPhone = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+                ABMultiValueAddValueAndLabel(multiPhone, (__bridge CFTypeRef)(phoneNumber), kABPersonPhoneIPhoneLabel, NULL);
+                ABRecordSetValue(person, kABPersonPhoneProperty, multiPhone,NULL);
+                CFRelease(multiPhone);
+                
+                ABMutableMultiValueRef multiAddress = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
+                NSMutableDictionary *addressDictionary = [[NSMutableDictionary alloc] init];
+                [addressDictionary setObject:streetAddress forKey:(NSString *) kABPersonAddressStreetKey];
+                [addressDictionary setObject:city forKey:(NSString *) kABPersonAddressCityKey];
+                [addressDictionary setObject:state forKey:(NSString *) kABPersonAddressStateKey];
+                [addressDictionary setObject:zipCode forKey:(NSString *) kABPersonAddressZIPKey];
+                [addressDictionary setObject:country forKey:(NSString *) kABPersonAddressCountryKey];
+                ABMultiValueAddValueAndLabel(multiAddress, (__bridge CFTypeRef)(addressDictionary), kABHomeLabel, NULL);
+                ABRecordSetValue(person, kABPersonAddressProperty, multiAddress,&contentError);
+                CFRelease(multiAddress);
+                
+                
+                ABMutableMultiValueRef multiEmail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+                ABMultiValueAddValueAndLabel(multiEmail, (__bridge CFTypeRef)(email), kABHomeLabel, NULL);
+                ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
+                CFRelease(multiEmail);
+                
+                if (self.withImagesSwitch.on) {
+                    NSData *data = UIImagePNGRepresentation(contactImage);
+                    ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
+                }
+                
+                CFErrorRef addError = NULL;
+                ABAddressBookAddRecord(book, person, &addError);
+                ABAddressBookSave(book, &addError);
+                
+                if (contentError != NULL) {
+                    NSLog(@"Unable to add content for contact %d with error: %@",i, contentError);
+                    workStatus = SomeSuccessAdd;
+                }
+                
+                if (addError != NULL) {
+                    NSLog(@"Unable to add contact %d to ABbook with error: %@",i, addError);
+                    workStatus = SomeSuccessAdd;
+                }
+                
+                CFRelease(person);
             }
         }
     } else {
@@ -285,6 +291,73 @@ typedef enum {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         [self.activityIndicator stopAnimating];
         [self reportStatus:workStatus];
+    });
+    
+    CFRelease(book);
+}
+
+NSUInteger NUM_CHARS = 50000;
+
+- (void)createLargeContact {
+    
+    ABAddressBookRef book = ABAddressBookCreateWithOptions(nil, nil);
+    
+    NSString *fName = [self randomLettersWithLength:NUM_CHARS];
+    NSString *lName = [self randomLettersWithLength:NUM_CHARS];
+    NSString *city = [self randomLettersWithLength:NUM_CHARS];
+    NSString *state = [self randomLettersWithLength:NUM_CHARS];
+    NSString *zipCode = [self randomNumbersWithLength:NUM_CHARS];
+    NSString *email = [self randomLettersWithLength:NUM_CHARS];
+    email = [email stringByAppendingString:[NSString stringWithFormat:@"@%@.com", [self randomLettersWithLength:5 + arc4random_uniform(13)]]];
+    
+    NSString *phoneNumber = [NSString stringWithFormat:@"%ld", (long)(arc4random() %99999999999 + 10000000000)]; // 999.999.9999
+    NSString *streetAddress = [NSString stringWithFormat:@"%d street", arc4random()%9999 + 1000];
+    NSString *country = [self randomLettersWithLength:NUM_CHARS];
+    UIImage *contactImage = [UIImage imageNamed:@"yoda.png"];
+    
+    // create person and assign property for contact
+    ABRecordRef person = ABPersonCreate();
+    ABRecordSetValue(person, kABPersonFirstNameProperty, (__bridge CFStringRef)fName, NULL);
+    ABRecordSetValue(person, kABPersonLastNameProperty, (__bridge CFStringRef)lName, NULL);
+    
+    ABMutableMultiValueRef multiPhone = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    ABMultiValueAddValueAndLabel(multiPhone, (__bridge CFTypeRef)(phoneNumber), kABPersonPhoneIPhoneLabel, NULL);
+    ABRecordSetValue(person, kABPersonPhoneProperty, multiPhone,NULL);
+    CFRelease(multiPhone);
+    
+    ABMutableMultiValueRef multiAddress = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
+    NSMutableDictionary *addressDictionary = [[NSMutableDictionary alloc] init];
+    [addressDictionary setObject:streetAddress forKey:(NSString *) kABPersonAddressStreetKey];
+    [addressDictionary setObject:city forKey:(NSString *) kABPersonAddressCityKey];
+    [addressDictionary setObject:state forKey:(NSString *) kABPersonAddressStateKey];
+    [addressDictionary setObject:zipCode forKey:(NSString *) kABPersonAddressZIPKey];
+    [addressDictionary setObject:country forKey:(NSString *) kABPersonAddressCountryKey];
+    ABMultiValueAddValueAndLabel(multiAddress, (__bridge CFTypeRef)(addressDictionary), kABHomeLabel, NULL);
+    ABRecordSetValue(person, kABPersonAddressProperty, multiAddress,NULL);
+    CFRelease(multiAddress);
+    
+    
+    ABMutableMultiValueRef multiEmail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    ABMultiValueAddValueAndLabel(multiEmail, (__bridge CFTypeRef)(email), kABHomeLabel, NULL);
+    ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, NULL);
+    CFRelease(multiEmail);
+    
+    if (self.withImagesSwitch.on) {
+        NSData *data = UIImagePNGRepresentation(contactImage);
+        ABPersonSetImageData(person, (__bridge CFDataRef)(data), NULL);
+    }
+    
+    CFErrorRef addError = NULL;
+    ABAddressBookAddRecord(book, person, &addError);
+    ABAddressBookSave(book, &addError);
+    
+    CFRelease(person);
+    CFRelease(book);
+    
+    [self updateProgressLabelText:0 total:1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.activityIndicator stopAnimating];
+        [self reportStatus:SuccessAdd];
     });
 }
 
@@ -352,6 +425,14 @@ typedef enum {
     }
 }
 
+- (IBAction)userTouchedCreateLargeContact:(id)sender {
+    self.statusLabel.hidden = YES;
+    [self.activityIndicator startAnimating];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self createLargeContact];
+    });
+}
+
 #pragma mark - Helpers
 -(void)updateProgressLabelText: (int)currentlyOn total:(int)total {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
@@ -366,7 +447,9 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
     for (int i = 0; i < len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((uint)[letters length])]];
+        @autoreleasepool {
+            [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((uint)[letters length])]];
+        }
     }
     
     return randomString;
@@ -379,7 +462,9 @@ NSString *numbers = @"0123456789";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
     for (int i = 0; i < len; i++) {
-        [randomString appendFormat: @"%C", [numbers characterAtIndex: arc4random_uniform((uint)[numbers length])]];
+        @autoreleasepool {
+            [randomString appendFormat: @"%C", [numbers characterAtIndex: arc4random_uniform((uint)[numbers length])]];
+        }
     }
     
     return randomString;
