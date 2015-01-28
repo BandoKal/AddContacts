@@ -34,6 +34,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *withImagesSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *randomizedSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *fifteenKBSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property BOOL accessGranted;
 
@@ -262,6 +263,11 @@ typedef enum {
                 ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
                 CFRelease(multiEmail);
                 
+                if (self.fifteenKBSwitch.on) {
+                    NSString *fifteenKBString = [self randomLettersWithLength:15000];
+                    ABRecordSetValue(person, kABPersonNoteProperty, (__bridge CFStringRef)fifteenKBString, NULL);
+                }
+                
                 if (self.withImagesSwitch.on) {
                     NSData *data = UIImagePNGRepresentation(contactImage);
                     ABPersonSetImageData(person, (__bridge CFDataRef)(data), &contentError);
@@ -296,7 +302,7 @@ typedef enum {
     CFRelease(book);
 }
 
-NSUInteger NUM_CHARS = 50000;
+NSUInteger NUM_CHARS = 150000;
 
 - (void)createLargeContact {
     
@@ -442,7 +448,7 @@ NSUInteger NUM_CHARS = 50000;
 
 NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
--(NSString *) randomLettersWithLength: (int) len {
+-(NSString *) randomLettersWithLength: (NSUInteger) len {
     
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
@@ -457,7 +463,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 NSString *numbers = @"0123456789";
 
--(NSString *) randomNumbersWithLength: (int) len {
+-(NSString *) randomNumbersWithLength: (NSUInteger) len {
     
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
