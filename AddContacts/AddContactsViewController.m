@@ -30,11 +30,11 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIButton *removeAddedContactsButton;
 @property (strong, nonatomic) IBOutlet UITextField *createQuantityTextField;
 @property (strong, nonatomic) IBOutlet UITextField *deleteQuantityTextField;
+@property (strong, nonatomic) IBOutlet UITextField *contactSizeTextField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @property (strong, nonatomic) IBOutlet UISwitch *withImagesSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *randomizedSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *fifteenKBSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property BOOL accessGranted;
 
@@ -263,9 +263,14 @@ typedef enum {
                 ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
                 CFRelease(multiEmail);
                 
-                if (self.fifteenKBSwitch.on) {
-                    NSString *fifteenKBString = [self randomLettersWithLength:15000];
-                    ABRecordSetValue(person, kABPersonNoteProperty, (__bridge CFStringRef)fifteenKBString, NULL);
+                if (self.contactSizeTextField.text != nil) {
+                    NSString *sizeString = self.contactSizeTextField.text;
+                    
+                    NSInteger sizeRequested = [sizeString integerValue];
+                    NSInteger sizeOfNote = sizeRequested - fName.length - lName.length - city.length - state.length - zipCode.length - email.length - phoneNumber.length - streetAddress.length - country.length - 439; //The 439 comes from a constant size that's encountered when checking the size of a contact in Core trunk. Including it here so that QA can specify the exact size of the contact
+                    
+                    NSString *extraKBString = [self randomLettersWithLength:sizeOfNote];
+                    ABRecordSetValue(person, kABPersonNoteProperty, (__bridge CFStringRef)extraKBString, NULL);
                 }
                 
                 if (self.withImagesSwitch.on) {
