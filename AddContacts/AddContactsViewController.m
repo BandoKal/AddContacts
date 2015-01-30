@@ -263,14 +263,22 @@ typedef enum {
                 ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &contentError);
                 CFRelease(multiEmail);
                 
-                if (self.contactSizeTextField.text != nil) {
+                if ([self.contactSizeTextField.text isEqualToString:@""] == NO) {
                     NSString *sizeString = self.contactSizeTextField.text;
                     
                     NSInteger sizeRequested = [sizeString integerValue];
-                    NSInteger sizeOfNote = sizeRequested - fName.length - lName.length - city.length - state.length - zipCode.length - email.length - phoneNumber.length - streetAddress.length - country.length - 439; //The 439 comes from a constant size that's encountered when checking the size of a contact in Core trunk. Including it here so that QA can specify the exact size of the contact
+                    NSInteger sizeOfNote = sizeRequested - fName.length - lName.length - city.length - state.length - zipCode.length - email.length - phoneNumber.length - streetAddress.length - country.length - 439; //The 439 comes from a constant size that's encountered when checking the size of a contact in Core trunk. Including it here so that QA can specify the exact size of the contact.
                     
-                    NSString *extraKBString = [self randomLettersWithLength:sizeOfNote];
-                    ABRecordSetValue(person, kABPersonNoteProperty, (__bridge CFStringRef)extraKBString, NULL);
+                    if (sizeOfNote > 0) {
+                        NSString *extraKBString = [self randomLettersWithLength:sizeOfNote];
+                        ABRecordSetValue(person, kABPersonNoteProperty, (__bridge CFStringRef)extraKBString, NULL);
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UIAlertView *bytesToSmallAlert = [[UIAlertView alloc] initWithTitle:@"Too Few Bytes" message:@"The contact generator was unable to create a contact with that byte size. Please enter a larger number." delegate:nil cancelButtonTitle:@"Will do, chief" otherButtonTitles:nil];
+                            [bytesToSmallAlert show];
+                        });
+                        break;
+                    }
                 }
                 
                 if (self.withImagesSwitch.on) {
