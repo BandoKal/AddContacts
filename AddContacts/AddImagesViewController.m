@@ -130,13 +130,24 @@ static NSString *const baseImageForRandomImages = @"base_image.jpg";
     }
     
     [self markImageOperationAsStarting];
-    [FeatureAPI.singleFeatureAPI addRandomPhotosWithCount:self.quantityTextField.text.intValue toAlbumName:@"Test Photos!" withCompletionBlock:^(NSError *error) {
-        NSLog(@"Adding photos complete!");
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.doneLabel.hidden = NO;
-            [self markImageOperationAsEnded];
-        });
-    }];
+    
+    if (self.randomImageSwitch.enabled == YES) {
+        [FeatureAPI.singleFeatureAPI addRandomPhotosWithCount:self.quantityTextField.text.intValue toAlbumName:@"Test Photos!" withCompletionBlock:^(NSError *error) {
+            NSLog(@"Adding photos complete!");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.doneLabel.hidden = NO;
+                [self markImageOperationAsEnded];
+            });
+        }];
+    } else {
+        [FeatureAPI.singleFeatureAPI addPhotos:@[self.imageViewToAdd.image] toAlbumName:@"Test Photos!" withCompletionBlock:^(NSError *error) {
+            NSLog(@"Adding photos complete!");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.doneLabel.hidden = NO;
+                [self markImageOperationAsEnded];
+            });
+        }];
+    }
 }
 
 - (IBAction)randomImageSwitchChanged:(id)sender {
